@@ -1,0 +1,17 @@
+Fabric==1.5.1
+Flask==0.9
+Jinja2==2.6
+Werkzeug==0.8.3
+boto==2.6.0
+gdata==2.0.17
+httplib2==0.7.7
+keyring==1.2
+ordereddict==1.1
+paramiko==1.9.0
+pycrypto==2.6
+python-gflags==2.0
+scrubber==1.6.1
+wsgiref==0.1.2
+-e hg+https://code.google.com/p/google-api-python-client/#egg=google-api-python-client-dev
+-e git+git://github.com/newsapps/requests.git#egg=requests-dev
+-e git+git://github.com/newsapps/tarbell.git#egg=tarbell-dev

@@ -1,0 +1,4 @@
+.DS_Store
+*.pyc
+out
+client_secrets.json

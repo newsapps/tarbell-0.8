@@ -1,0 +1,18 @@
+/* Styles for readme */
+
+/* Defaults */
+section { margin-bottom: 25px; }
+
+/* Page titles */
+.title { margin-bottom: 20px; }
+#title, #subtitle { line-height: 60px; display: inline; }
+#title { font-size: 60px; }
+#subtitle { margin-left: 15px; }
+
+/* About */
+#about { padding: 20px 20px 15px 20px; background-color: #e5e5e5; }
+#about .panel img { margin-bottom: 10px; }
+#about .panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
+
+/* Meta */
+#meta img { float: left; width: 45%; margin-right: 5%; }
