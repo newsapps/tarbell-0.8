@@ -22,6 +22,6 @@ Get your Amazon S3 credentials.
 Add some lines to your `~/.bash_profile`:
 
 <pre>
-export AWS_ACCESS_KEY_ID="<MY ACCESS KEY ID>"
-export AWS_SECRET_ACCESS_KEY="<MY SECRET ACCESS KEY">
+export AWS_ACCESS_KEY_ID="MYACCESSKEYID"
+export AWS_SECRET_ACCESS_KEY="MYSECRETACCESSKEY"
 </pre>
