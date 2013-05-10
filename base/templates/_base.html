@@ -57,6 +57,7 @@
 #}
 <script type="text/javascript">
 var require = {
+    baseUrl: '/',
     paths: {
         {# Handy base libraries #}
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
@@ -71,16 +72,10 @@ var require = {
                 {% set project = 'base' %}
             {% else %}
                 {% set project = project_name %}
+                {% set project_name = '/' + project_name %}
             {% endif %}
             '{{ project }}': '{{ project_name }}/js',
         {% endfor %}
-
-        {# If the requirejs worksheet exists, load in required libraries #}
-        {% if requirejs %}
-            {% for library in requirejs %}
-                '{{ library.name }}': '{{ library.url|reverse|replace("sj.", "", 1)|reverse }}',
-            {% endfor %}
-        {% endif %}
     },
     shim: {
         backbone: {
@@ -90,20 +85,11 @@ var require = {
         underscore: {
             exports: '_'
         },
-
-        {# If the requirejs worksheet exists, load in library configuration #}
-        {% if requirejs %}
-            {% for library in requirejs %}
-                '{{ library.name }}': {
-                    {% if library.deps %}'deps':{{ library.deps }},{% endif %}
-                    {% if library.exports %}'exports':'{{ library.exports }},'{% endif %}
-                },
-            {% endfor %}
-        {% endif %}
     }
 };
 </script>
-<script type="text/javascript" data-main="/{{ project }}/js/app" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.js"></script>
+
+<script type="text/javascript" data-main="{{ project }}/app" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.js"></script>
 {% endblock scripts %}
 
 </body>

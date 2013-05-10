@@ -17,8 +17,6 @@ Set default context. These variables will be globally available to the template.
 """
 DEFAULT_CONTEXT = {
     'title': 'Tarbell Readme',
-    'ad_path': '',
-    'analytics_path': '',
 }
 
 """
