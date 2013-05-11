@@ -2,5 +2,16 @@
 body.has-nav { padding-top: 41px; }
 body.has-nav section { padding-top: 41px; margin-top: -41px; }
 
+body.has-nav .toggle { display: none; } 
 /* Reset nested link elements to default color */
 a > * { color: #333; }
+
+/* Mobile devices */
+@media all and (max-width: 767px) {
+    body.has-nav section { padding-top: 0; margin-top: 0; }
+    .nav-collapse { display: none; }
+    body.has-nav .toggle { display: block; } 
+}
+@media all and (max-width: 979px) {
+    body.has-nav { padding-top: 0; }
+}

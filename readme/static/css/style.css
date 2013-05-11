@@ -9,9 +9,10 @@ section { margin-bottom: 25px; }
 #title, #subtitle { line-height: 60px; display: inline; }
 
 /* Promo banner */
-#promobox { margin-top: 20px; margin-bottom: 30px; padding: 20px 20px 15px 20px; background-color: #f3f3f3; }
+#promobox { margin-top: 20px; margin-bottom: 30px; border-bottom: 1px solid #ccc; }
 #title { font-size: 60px; }
 #subtitle { margin-left: 15px; }
+#promobox .panel { margin-bottom: 30px; }
 #promobox .panel img { margin-bottom: 10px; }
 #promobox .panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
 
@@ -60,6 +61,11 @@ section { margin-bottom: 25px; }
 ul.directories { color: #666; }
 ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; } 
 
-.doc-section pre { padding: 11px; background: #000; color: #f8f8f8; }
-.doc-section pre code { padding: 0; }
+.doc-section pre { font-size: 13px; padding: 11px; background: #000; color: #f8f8f8; }
+.doc-section pre code { font-size: 13px; padding: 0; }
 
+@media all and (max-width: 767px) {
+    #title, #subtitle { display: block; margin: 0; }
+    #title { font-size: 32px; line-height: 32px; }
+    #subtitle { font-size: 20px; line-height: 32px; }
+}
