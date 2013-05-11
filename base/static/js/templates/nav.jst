@@ -11,8 +11,8 @@
             <% } %>
             <% if (nav) { %>
             <ul id="nav" class="nav">
-                <% _.each(nav, function(link) { %>
-                <li><a href="<%= link.url %>"><%= link.label %></a></li>
+                <% _.each(nav, function(link, i) { %>
+                <li<% if (i === 0) { %> class="active"<% } %>><a href="<%= link.url %>"><%= link.label %></a></li>
                 <% }) %>
             </ul>
             <% } %>

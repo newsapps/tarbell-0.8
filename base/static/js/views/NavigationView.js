@@ -1,4 +1,4 @@
-define(['backbone', 'text!base/templates/nav.jst'], function(Backbone, NavTemplate) {
+define(['backbone', 'text!base/templates/nav.jst', 'bootstrap'], function(Backbone, NavTemplate) {
     var NavigationView = Backbone.View.extend({
         id: 'navigation',
         parse_selector: '#content section',
@@ -16,20 +16,18 @@ define(['backbone', 'text!base/templates/nav.jst'], function(Backbone, NavTempla
         },
         render: function() {
             var rendered = _.template(this.template, this.context);
-            this.$el.append(rendered);
+            $('body').addClass('has-nav').attr('data-offset', '82').attr('data-spy', 'scroll');
+            this.$el.append(rendered).find('.nav').scrollspy();
             return this;
         },
         parse_sections: function() {
             var nav = [];
             _.each($(this.parse_selector), function(section) {
                 var title = $(section).data('title');
-                if (!title) {
-                    title = $(section).find('h1').text();
-                }
                 if (title && section.id) {
                     nav.push({label: title, url: '#'+ section.id});
                 }
-            }); 
+            });
             return { nav: nav };
         }
     });
