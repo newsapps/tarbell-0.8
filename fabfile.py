@@ -199,9 +199,6 @@ def _create_google_spreadsheet(project_name):
         'title': '%s microcopy' % project_name,
         'description': 'Microcopy file for %s project' % project_name,
         'mimeType': 'application/vnd.ms-excel',
-        'parents': [
-            {'id': '0BzgNg5alNkjPQi01VFk4V0liRzQ'}  # Microcopy folder ID
-        ],
     }
     try:
         newfile = service.files()\
