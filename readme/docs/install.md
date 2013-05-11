@@ -1,4 +1,5 @@
-# Installing the Tarbell template
+# Install
+*Clone repository, install virtual environment, install requirements, configure your system for Amazon S3, and run a test server.*
 
 Tarbell is a library which powers static sites. It doesn't do much on its own.
 To start using Tarbell, we highly recommend using the Tarbell template, which

@@ -1,7 +1,6 @@
-# Build
-*Manage your Google spreadsheet, edit templates, tweak CSS, and take a peek at
-the Javascript app.*
- 
+# Advanced
+*Configure Tarbell, set up a Flask Blueprint, and edit the default Javascript app.*
+
 Now that you've created a new project, let's look at how Tarbell projects are constructed. 
 
 ## Project layout

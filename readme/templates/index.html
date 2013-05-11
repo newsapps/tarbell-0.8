@@ -3,42 +3,56 @@
 
 {% block css %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="{{ static_url('readme', '/css/style.css') }}" />
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid">
-    <section id="about" data-title="About">
-        <div class="title">
-            <h1 id="title">{{ title }}</h1>
-            <h2 id="subtitle">{{ subtitle }}</h2>
+    <section id="about">
+        <div id="promobox">
+            <div class="title">
+                <h1 id="title">{{ title }}</h1>
+                <h2 id="subtitle">{{ subtitle }}</h2>
+            </div>
+            <div class="row-fluid">
+                <div class="span4 panel">
+                    <img src="{{ static_url('readme', '/img/google-screenshot.jpg') }}" alt="Google doc screenshot" />
+                    <h3>{{ intro_google_doc_label|process_text }}</h4>
+                </div>
+                <div class="span4 panel">
+                    <img src="{{ static_url('readme', '/img/html-edit-screenshot.jpg') }}" alt="S3 publish screenshot" />
+                    <h3>{{ intro_html_label|process_text }}</h4>
+                </div>
+                <div class="span4 panel">
+                    <img src="{{ static_url('readme', '/img/s3-publish-screenshot.jpg') }}" alt="S3 publish screenshot" />
+                    <h3>{{ intro_publish_label|process_text }}</h4>
+                </div>
+            </div>
         </div>
-        <div class="row-fluid">
-            <div class="span4 panel">
-                <img src="{{ static_url('readme', '/img/google-screenshot.jpg') }}" alt="Google doc screenshot" />
-                <h3>{{ intro_google_doc_label|process_text }}</h4>
+        <div id="aboutbox" class="row-fluid">
+            <div id="getting-started" class="span6">
+                <h2>{{ docs_toc_title }}</h2>
+                <ol>
+                    {% for section in sections %}
+                    <li>
+                        <a href="#{{ section.id }}">{{ section.title }}: {{ section.description|markdown }}</a>
+                    </li>
+                    {% endfor %}
+                </ol>
             </div>
-            <div class="span4 panel">
-                <img src="{{ static_url('readme', '/img/html-edit-screenshot.jpg') }}" alt="S3 publish screenshot" />
-                <h3>{{ intro_html_label|process_text }}</h4>
-            </div>
-            <div class="span4 panel">
-                <img src="{{ static_url('readme', '/img/s3-publish-screenshot.jpg') }}" alt="S3 publish screenshot" />
-                <h3>{{ intro_publish_label|process_text }}</h4>
-            </div>
-        </div>
-    </section>
-    <section id="meta">
-        <div class="row-fluid">
-            <div class="span4">
+            <div id="version" class="span6">
                 <h2>{{ about_title }}</h2>
-                <p>Latest version: {{ about_version }}</p>
-                <p>{{ about_credit }}</p>
+                <p>{{ about_description|process_text }}</p>
+                <p>{{ about_version|process_text }}</p>
+                <p>{{ about_credit|process_text }}</p>
+                <p>{{ about_license|process_text }}</p>
                 <p>{{ about_template_link|process_text }}</p>
                 <p>{{ about_library_link|process_text }}</p>
             </div>
-            <div class="span4">
+        </div>
+        <div id="shamelessplug" class="row-fluid">
+            <div class="span6">
                 <h2>Tarbell projects</h2>
                 <ul>
                     {% for project in projects %}  
@@ -46,7 +60,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="span4">
+            <div class="span6">
                 <h2>Who is Ida Tarbell?</h2>
                 <img src="{{ static_url('readme', '/img/ida-tarbell.jpg') }}" alt="Portrait of Ida Tarbell" />
                 <p>{{ about_ida_tarbell|process_text }}</p>
@@ -54,8 +68,7 @@
         </div>
     </section>
     {% for section in sections %}
-    <section id="{{ section.id }}" data-title="{{ section.navtitle }}">
-        <h1>{{ section.title }}</h1>
+    <section id="{{ section.id }}" class="doc-section" data-title="{{ section.title }}">
         {{ section.body|markdown }}
     </section>
     {% endfor %}

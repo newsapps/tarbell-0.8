@@ -9,10 +9,25 @@ section { margin-bottom: 25px; }
 #title { font-size: 60px; }
 #subtitle { margin-left: 15px; }
 
-/* About */
-#about { padding: 20px 20px 15px 20px; background-color: #e5e5e5; }
-#about .panel img { margin-bottom: 10px; }
-#about .panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
+/* Promo banner */
+#promobox { margin-top: 20px; margin-bottom: 30px; padding: 20px 20px 15px 20px; background-color: #e5e5e5; }
+#promobox .panel img { margin-bottom: 10px; }
+#promobox .panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
 
-/* Meta */
-#meta img { float: left; width: 45%; margin-right: 5%; }
+/* Promobox: Shameless plug */
+#shamelessplug img { float: left; width: 45%; margin-right: 5%; }
+
+/* About box */
+#aboutbox { padding-bottom: 30px; margin: 30px 0; border-bottom: 1px solid #ccc; }
+#aboutbox, #aboutbox p { font-size: 18px; line-height: 26px; font-weight: 400; margin-bottom: 26px; }
+
+/* Getting started box */
+#getting-started a { font-weight: bold; }
+#getting-started p { display: inline; }
+#getting-started em { font-style: normal; }
+#getting-started ol { margin-top: 0; }
+#getting-started li { margin-bottom: 26px; line-height: 26px; }
+
+/* Documentation */
+.doc-section { margin-bottom: 80px; }
+.doc-section h1 { margin-bottom: 30px; }

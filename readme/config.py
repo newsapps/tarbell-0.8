@@ -19,6 +19,8 @@ DEFAULT_CONTEXT = {
     'title': 'Tarbell Readme',
 }
 
+DOCS = ['install', 'create', 'build', 'deploy', 'advanced',]
+
 """
 Root URL project will appear at (e.g. http://mydomain.tld/)
 """
@@ -42,19 +44,29 @@ from flask import Blueprint
 blueprint = Blueprint('readme', __name__)
 
 def get_doc(file):
-    path = os.path.join(os.path.dirname(__file__), 'docs', '%s.md' % file)
-    return open(path, 'r').read()
+    try:
+        path = os.path.join(os.path.dirname(__file__), 'docs', '%s.md' % file)
+        return open(path, 'r').read()
+    except IOError:
+        return None
+
 
 @blueprint.app_context_processor
 def context_processor():
     """ Readme context processor. Get docs from docs dir."""
-    sections = [
-        { 'id': 'install', 'navtitle': 'Install Tarbell', 'body': get_doc('install') },
-        { 'id': 'build', 'navtitle': 'Create project', 'body': get_doc('start') },
-        { 'id': 'build', 'navtitle': 'Build project', 'body': get_doc('build') },
-        { 'id': 'deploy', 'navtitle': 'Deploy project', 'body': get_doc('deploy') },
-    ]
-    return { 'sections': sections }
+    sections = []
+    for doc in DOCS:
+        content = get_doc(doc)
+        lines = content.split("\n")
+        doc = {
+            'id': doc,
+            'title': lines[0].replace("#", "").strip(),
+            'description': "\n".join(lines[1:3]),
+            'body': content,
+        }
+        sections.append(doc)
+    print sections
+    return {'sections': sections}
 
 
 """

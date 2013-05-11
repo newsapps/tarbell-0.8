@@ -1,4 +1,6 @@
-# Start a new project 
+# New project 
+*Use the `fab newproject` command to kick off a new project by copying a basic
+project structure and setting up a Google spreadsheet.*
 
 ## Create a project
 
