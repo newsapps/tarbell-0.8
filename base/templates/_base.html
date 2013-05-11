@@ -66,6 +66,9 @@ var require = {
         text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text',
         underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
 
+        {# Libraries for default views #}
+        highlight: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min',
+
         {# Construct aliases to each project's JS directory #}
         {% for project_name in TARBELL_PROJECTS %}
             {% if project_name == '' %}
@@ -84,6 +87,9 @@ var require = {
         },
         bootstrap: {
             deps: ["jquery"]
+        },
+        highlight: {
+            exports: 'hljs'
         },
         underscore: {
             exports: '_'

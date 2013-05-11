@@ -48,6 +48,8 @@ section { margin-bottom: 25px; }
 .doc-section p,
 .doc-section pre { margin-bottom: 22px; }
 
+.doc-section pre { padding: 0; }
+
 .doc-section h2,
 .doc-section h3,
 .doc-section h4,

@@ -18,18 +18,18 @@ empty, but also accepts several configuration options:</p>
            secrets.py to keep your authentication information out of version
            control.</strong></p>
 
-<pre>GOOGLE_DOC = {
+<pre><code class="python">GOOGLE_DOC = {
     'key': "BIGLONGSTRINGOFLETTERSANDNUMBERS",
     'account': "some+account@gmail.com",
     'password': "++GmailPassWord++",
-}</pre>
+}</code></pre>
     </li>
     <li><p><code>DEFAULT_CONTEXT</code>: Default context
     variables to make available to all project templates.</p>
-<pre>DEFAULT_CONTEXT = {
+<pre><code class="python">DEFAULT_CONTEXT = {
     'ad_path': '',
     'analytics_path': '',
-}</pre>
+}</code></pre>
     </li>
     <li><p><code>DONT_PUBLISH</code>: If <code>True</code>, this
     project will not be published to S3.</p>
@@ -50,16 +50,16 @@ empty, but also accepts several configuration options:</p>
 <p>For advanced uses, you can turn your project into a Flask Blueprint in order to
 register template filters or special URLS.</p>
 
-<pre># from flask import Blueprint
-# blueprint = Blueprint('awesome_project', __name__)
+<pre><code class="python">from flask import Blueprint
+blueprint = Blueprint('awesome_project', __name__)
 
 # Register template filter
 @blueprint.app_template_filter('example_filter')
 def example_filter(text):
-   return text.strip()</pre>
+   return text.strip()
 
 # Will be available at URL_ROOT/test
 @blueprint.route('/test')
 def test_route():
-   return render_template('awesome_project/test.html', context_var='test')</pre>
+   return render_template('awesome_project/test.html', context_var='test')</code></pre>
 

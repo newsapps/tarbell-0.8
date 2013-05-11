@@ -13,6 +13,7 @@ Now that you've created a new project, let's look at how Tarbell projects are co
 
 <ul class="directories">
 <li><p><code>config.py</code>: Configuration file. Required to detect the project.</p></li>
+<li><p><code>secrets.py</code>: Set <code>GOOGLE_AUTH</code> variable to configure authentication. Not tracked by Git.</p></li>
 <li><p><code>templates</code>: The templates directory contains Jinja templates that will be published at <code>/projectname/TEMPLATENAME.html</code>.</p>
     <ul>
         <li><p><code>index.html</code>: A basic template to start building with.</p></li>
