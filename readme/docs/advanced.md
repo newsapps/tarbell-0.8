@@ -1,18 +1,65 @@
 # Advanced
 *Configure Tarbell, set up a Flask Blueprint, and edit the default Javascript app.*
 
-Now that you've created a new project, let's look at how Tarbell projects are constructed. 
+## Configuring Tarbell
 
-## Project layout
+When your project was created, a <code>config.py</code> file was created in 
+the project directory, which lets Tarbell find your project. This file can be 
+empty, but also accepts several configuration options:</p>
 
-A Tarbell project directory structure looks like this:
+<ul>
+    <li>
+        <p><code>GOOGLE_DOC</code>: A dict of Google docs parameters
+            to access a spreadsheet. Takes <code>key</code>,
+            <code>account</code>, and <code>password</code> parameters.</p>
 
-* `config.py`: Configuration file. Required to detect the project.
-* `templates`: The templates directory contains Jinja templates that will be published at `/projectname/TEMPLATENAME.html`.
-* `static`: The static directory contains static assets like images, CSS, and Javascript. They are published at `/projectname/FILENAME`.
+        <p>The default template stores account and password variables in a file
+           called `secrets.py` in variable called `GOOGLE_AUTH`. <strong>Use
+           secrets.py to keep your authentication information out of version
+           control.</strong></p>
 
-**What's the difference between static assets and templates?** Static assets are simply served as-is, while templates are provided with context variables and rendered using Jinja.
+<pre>GOOGLE_DOC = {
+    'key': "BIGLONGSTRINGOFLETTERSANDNUMBERS",
+    'account': "some+account@gmail.com",
+    'password': "++GmailPassWord++",
+}</pre>
+    </li>
+    <li><p><code>DEFAULT_CONTEXT</code>: Default context
+    variables to make available to all project templates.</p>
+<pre>DEFAULT_CONTEXT = {
+    'ad_path': '',
+    'analytics_path': '',
+}</pre>
+    </li>
+    <li><p><code>DONT_PUBLISH</code>: If <code>True</code>, this
+    project will not be published to S3.</p>
+    <pre>DONT_PUBLISH=True</pre>
+    <p>Default: <code>False</code></p>
+    </li>
+    <li><p><code>URL_ROOT</code>: Override the published URL to
+    differ from the directory name.</p> 
+    <pre>URL_ROOT='totally-awesome-project'</pre>
+    <p>Default: <code>None</code> (publish using name of directory)</p>
+    </li>
+    <li><p><code>CREATE_JSON</code>: If <code>False</code>, do not publish
+    JSON data. Useful if spreadsheets contain secrets or sensitive information, and so should not be public.</p>
+    <pre>CREATE_JSON = False</pre>
+    <p>Default: <code>True</code></p></li>
+</ul>
 
-## Editing templates
+<p>For advanced uses, you can turn your project into a Flask Blueprint in order to
+register template filters or special URLS.</p>
 
-## Editing Javascript app
+<pre># from flask import Blueprint
+# blueprint = Blueprint('awesome_project', __name__)
+
+# Register template filter
+@blueprint.app_template_filter('example_filter')
+def example_filter(text):
+   return text.strip()</pre>
+
+# Will be available at URL_ROOT/test
+@blueprint.route('/test')
+def test_route():
+   return render_template('awesome_project/test.html', context_var='test')</pre>
+

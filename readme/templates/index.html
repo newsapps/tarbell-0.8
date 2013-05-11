@@ -2,13 +2,15 @@
 {% extends '_base.html' %}
 
 {% block css %}
-{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ static_url('readme', '/bootstrap/css/bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ static_url('readme', '/bootstrap/css/bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ static_url('base', '/css/style.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ static_url('readme', '/css/style.css') }}" />
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
+<div id="body" class="container-fluid">
     <section id="about">
         <div id="promobox">
             <div class="title">

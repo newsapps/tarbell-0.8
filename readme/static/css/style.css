@@ -1,4 +1,5 @@
 /* Styles for readme */
+#body.container-fluid { max-width: 1170px; margin: 0 auto; }
 
 /* Defaults */
 section { margin-bottom: 25px; }
@@ -6,11 +7,11 @@ section { margin-bottom: 25px; }
 /* Page titles */
 .title { margin-bottom: 20px; }
 #title, #subtitle { line-height: 60px; display: inline; }
-#title { font-size: 60px; }
-#subtitle { margin-left: 15px; }
 
 /* Promo banner */
-#promobox { margin-top: 20px; margin-bottom: 30px; padding: 20px 20px 15px 20px; background-color: #e5e5e5; }
+#promobox { margin-top: 20px; margin-bottom: 30px; padding: 20px 20px 15px 20px; background-color: #f3f3f3; }
+#title { font-size: 60px; }
+#subtitle { margin-left: 15px; }
 #promobox .panel img { margin-bottom: 10px; }
 #promobox .panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
 
@@ -19,15 +20,42 @@ section { margin-bottom: 25px; }
 
 /* About box */
 #aboutbox { padding-bottom: 30px; margin: 30px 0; border-bottom: 1px solid #ccc; }
-#aboutbox, #aboutbox p { font-size: 18px; line-height: 26px; font-weight: 400; margin-bottom: 26px; }
+#aboutbox,
+#aboutbox p,
+#aboutbox ol li,
+#aboutbox ul li { font-size: 18px; line-height: 24px; font-weight: 400; margin-bottom: 24px; }
 
 /* Getting started box */
 #getting-started a { font-weight: bold; }
 #getting-started p { display: inline; }
 #getting-started em { font-style: normal; }
 #getting-started ol { margin-top: 0; }
-#getting-started li { margin-bottom: 26px; line-height: 26px; }
 
-/* Documentation */
-.doc-section { margin-bottom: 80px; }
-.doc-section h1 { margin-bottom: 30px; }
+/* Documentation sections */
+.doc-section { padding-bottom: 44px; }
+
+.doc-section h1 { margin-top: 22px; margin-bottom: 11px; padding-top: 22px; border-top: 2px solid #999; }
+
+.doc-section h1 + p { margin-top: 11px; margin-bottom: 33px; }
+
+.doc-section h2,
+.doc-section h3,
+.doc-section h4,
+.doc-section h5,
+.doc-section h6,
+.doc-section p { max-width: 720px; }
+
+.doc-section p,
+.doc-section pre { margin-bottom: 22px; }
+
+.doc-section h2,
+.doc-section h3,
+.doc-section h4,
+.doc-section h5,
+.doc-section h6 { margin-top: 44px; }
+
+.aside { padding: 11px 11px 0 11px; margin-bottom: 22px; background-color: #f3f3f3; }
+.doc-section .aside h2 { margin-top: 0; font-size: 22px; line-height: 28px; }
+
+ul.directories { color: #666; }
+ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; } 
