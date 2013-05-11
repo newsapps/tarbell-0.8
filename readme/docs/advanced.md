@@ -33,17 +33,17 @@ empty, but also accepts several configuration options:</p>
     </li>
     <li><p><code>DONT_PUBLISH</code>: If <code>True</code>, this
     project will not be published to S3.</p>
-    <pre>DONT_PUBLISH=True</pre>
+    <pre><code class="python">DONT_PUBLISH=True</code></pre>
     <p>Default: <code>False</code></p>
     </li>
     <li><p><code>URL_ROOT</code>: Override the published URL to
     differ from the directory name.</p> 
-    <pre>URL_ROOT='totally-awesome-project'</pre>
+    <pre><code class="python">URL_ROOT='totally-awesome-project'</code></pre>
     <p>Default: <code>None</code> (publish using name of directory)</p>
     </li>
     <li><p><code>CREATE_JSON</code>: If <code>False</code>, do not publish
     JSON data. Useful if spreadsheets contain secrets or sensitive information, and so should not be public.</p>
-    <pre>CREATE_JSON = False</pre>
+    <pre><code class="python">CREATE_JSON = False</code></pre>
     <p>Default: <code>True</code></p></li>
 </ul>
 

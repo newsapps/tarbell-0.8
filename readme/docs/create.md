@@ -6,12 +6,12 @@ project structure and setting up a Google spreadsheet.*
 
 To create your first project, use `fab`.
 
-<pre><code class="bash">fab newproject</code></pre>
+<pre>fab newproject</pre>
 
 You'll be prompted with a series of questions. Here's what you'll see, with user
 input <span class="highlight">highlighted</span>.
 
-<pre><code class="bash">What is the directory name for the project? <span class="highlight">newproject</span>
+<pre>What is the directory name for the project? <span class="highlight">newproject</span>
 What is your project's full title? <span class="hightlight">My New Project</span>
 Do you want a Google doc associated with this project? [Y/n]: <span class="hightlight">y</span>
 Generating Google spreadsheet
@@ -38,7 +38,7 @@ Welcome to My New Project. Great work! What's next?
 Run `fab deploy` and `fab project:projectname deploy` to deploy to S3 if you have a bucket configured.
 
 Done.
-</code></pre>
+</pre>
 
 ## Project layout
 

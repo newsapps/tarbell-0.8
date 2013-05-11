@@ -48,8 +48,6 @@ section { margin-bottom: 25px; }
 .doc-section p,
 .doc-section pre { margin-bottom: 22px; }
 
-.doc-section pre { padding: 0; }
-
 .doc-section h2,
 .doc-section h3,
 .doc-section h4,
@@ -61,3 +59,7 @@ section { margin-bottom: 25px; }
 
 ul.directories { color: #666; }
 ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; } 
+
+.doc-section pre { padding: 11px; background: #000; color: #f8f8f8; }
+.doc-section pre code { padding: 0; }
+

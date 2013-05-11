@@ -12,7 +12,7 @@ function($, NavigationView, hljs) {
         title: { label: 'Tarbell Readme', url: '#top' },
     }).render();
 
-    $('.doc-section pre').each(function() {
+    $('.doc-section pre code').each(function() {
         hljs.highlightBlock(this);
     });
 });

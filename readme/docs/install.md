@@ -14,12 +14,12 @@ Tarbell.
 <p>Make sure you have <code>python</code> (2.6+), <code>git</code>, <code>hg</code> (mercurial), <code>pip</code>, <code>virtualenv</code>
 and <code>virtualenv-wrapper</code> installed on your system.</p>
 
-<pre><code class="bash">git clone https://github.com/newsapps/tarbell-template
+<pre>git clone https://github.com/newsapps/tarbell-template
 cd tarbell-template
 mkvirtualenv tarbell-template
 pip install -r requirements.txt
 python runserver.py
-</code></pre>
+</pre>
 
 <p>Now visit <a href="http://localhost:5000/readme">http://localhost:5000/readme</a> in your browser. 
 You should see the latest version of this page.</p>
@@ -43,6 +43,6 @@ Get your Amazon S3 credentials.
 
 Add some lines to your `~/.bash_profile`:
 
-<pre><code class="bash">export AWS_ACCESS_KEY_ID="MYACCESSKEYID"
+<pre><code class="markdown">export AWS_ACCESS_KEY_ID="MYACCESSKEYID"
 export AWS_SECRET_ACCESS_KEY="MYSECRETACCESSKEY"
 </code></pre>
