@@ -23,6 +23,7 @@ fab.env.oauth_redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
 fab.env.s3_bucket = 'my.s3bucket.tld'  # YOUR S3 BUCKET URL
 fab.env.project = ''
 
+
 def project(project=None):
     """
     Set project
@@ -41,7 +42,7 @@ def deploy():
 
 def runserver():
     """Run a fab.local development server."""
-    print "Point your browser to http://fab.localhost:5000/"
+    print "Point your browser to http://localhost:5000/"
     print "Type ctrl-c to quit."
     fab.local('python run.py' % fab.env)
 
@@ -133,12 +134,16 @@ def newproject(project_name=None):
     print
     print "Welcome to %s. Great work! What's next?" % context['long_name']
     print
-    print ("- Edit %s to set up default values and Google Doc "
+    print ("- Edit %s to set up template values and adjust project "
            "settings.") % os.path.relpath(os.path.join(proj_dir, 'config.py'))
-    print "- Edit %s to edit your default, root template." %\
+    print ("- Edit %s to configure Google spreadsheet authentication "
+           "variables.") % os.path.relpath(os.path.join(proj_dir, 'secrets.py'))
+    print "- Edit %s to edit your default template." %\
         os.path.relpath(os.path.join(proj_dir, 'templates/index.html'))
+    print "- Edit %s to edit your default Javascript app." %\
+        os.path.relpath(os.path.join(proj_dir, 'static/js/app.js'))
     print ("- Run `fab runserver` and view your project at "
-           "http://fab.localhost:5000/%s/") % context['project_name']
+           "http://localhost:5000/%s/") % context['project_name']
     print
     print ("Run `fab deploy` and `fab project:projectname deploy` to deploy to "
            "S3 if you have a bucket configured.")
