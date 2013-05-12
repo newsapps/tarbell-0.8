@@ -1,11 +1,9 @@
 from jinja2 import evalcontextfilter, Markup
-from datetime import datetime
 from time import time
-import os
 import re
 import dateutil.parser
 import dateutil.tz
-from flask import Blueprint, render_template
+from flask import Blueprint
 import markdown as Markdown
 
 blueprint = Blueprint('base', __name__)
@@ -14,10 +12,11 @@ URL_ROOT = ''
 
 DOMAIN = 'http://mydomain.tld'
 
+
 @blueprint.app_context_processor
 def context_processor():
     """
-    Add helper functions to context for all projects. 
+    Add helper functions to context for all projects.
     """
     def static_url(project, path):
         cachebuster = int(time())
@@ -37,6 +36,7 @@ def context_processor():
 
     return context
 
+
 @blueprint.app_template_filter()
 def drop_cap(text):
     """
@@ -50,6 +50,7 @@ def drop_cap(text):
         content = ''
     return Markup(content)
 
+
 @blueprint.app_template_filter()
 def format_date(string, format='%b. %d, %Y', convert_tz=None):
     parsed = dateutil.parser.parse(string)
@@ -58,6 +59,7 @@ def format_date(string, format='%b. %d, %Y', convert_tz=None):
         parsed = parsed.astimezone(tz=local_zone)
 
     return parsed.strftime(format)
+
 
 @blueprint.app_template_filter()
 def strong_to_b(value):
@@ -150,6 +152,7 @@ def linebreaksbr(eval_ctx, value):
     paras = [u'%s' % p.replace('\n', '<br />') for p in paras]
     paras = u'\n\n'.join(paras)
     return Markup(paras)
+
 
 @blueprint.app_template_filter()
 def markdown(value):

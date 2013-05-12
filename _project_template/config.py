@@ -50,6 +50,8 @@ Example use of flask blueprint to add a template filter.
 """
 Load secrets. Don't change this unless you know what you're doing.
 """
+import imp
+import os
 def get_secrets():
     """ Return a secrets module """
     root = os.path.dirname(os.path.abspath(__file__))

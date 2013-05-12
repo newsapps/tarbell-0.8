@@ -7,23 +7,24 @@
 {{ "{% endblock %}" }}
 
 {{ "{% block content %}" }}
-<h1>{{ "{{ title }}" }}</h1>
+<div class="container-fluid">
+    <h1>{{ "{{ title }}" }}</h1>
 
-<section id="great-work" data-title="Great work">
+    <section id="great-work" data-title="Great work">
 
-<h2>Great work! Get ready to build your project</h2>
+    <h2>Great work! Get ready to build your project</h2>
 
-<p>Grab a cup of coffee and tea and get started working on your new project.</p>
+    <p>Grab a cup of coffee and tea and get started working on your new project.</p>
 
-<p>Start by editing <code>{{ project_name }}/templates/index.html</code>, this very file.</p>
+    <p>Start by editing <code>{{ project_name }}/templates/index.html</code>, this very file.</p>
 
-<p><strong>New to Tarbell?</strong> Check out the <a href="/readme/#build">project building docs</a>
-in the <a href="/readme/">Tarbell readme</a>.</p>
+    <p><strong>New to Tarbell?</strong> Check out the <a href="/readme/#build">project building docs</a>
+    in the <a href="/readme/">Tarbell readme</a>.</p>
 
-<p><strong>Hey! How did that navbar get up there?</strong> The navbar is set up by
-the default Javascript app associated with this project. To disable it, edit 
-<code>{{ project_name }}/static/js/app.js</code>.</p>
+    <p><strong>Hey! How did that navbar get up there?</strong> The navbar is set up by
+    the default Javascript app associated with this project. To disable it, edit 
+    <code>{{ project_name }}/static/js/app.js</code>.</p>
 
-</section>
-
+    </section>
+</div>
 {{ "{% endblock %}" }}
