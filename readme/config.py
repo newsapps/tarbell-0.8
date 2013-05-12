@@ -65,7 +65,6 @@ def context_processor():
             'body': content,
         }
         sections.append(doc)
-    print sections
     return {'sections': sections}
 
 
