@@ -19,7 +19,7 @@ DEFAULT_CONTEXT = {
     'title': 'Tarbell Readme',
 }
 
-DOCS = ['install', 'create', 'build', 'deploy', 'advanced',]
+DOCS = ['install', 'create', 'build', 'deploy', 'reference',]
 
 """
 Root URL project will appear at (e.g. http://mydomain.tld/)

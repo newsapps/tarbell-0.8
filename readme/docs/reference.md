@@ -1,5 +1,5 @@
-# Advanced
-*Configure Tarbell, set up a Flask Blueprint, and edit the default Javascript app.*
+# Reference
+*Configure Tarbell, set up a Flask Blueprint, special base project.*
 
 ## Configuring Tarbell
 
@@ -62,4 +62,11 @@ def example_filter(text):
 @blueprint.route('/test')
 def test_route():
    return render_template('awesome_project/test.html', context_var='test')</code></pre>
+
+## Base project
+
+If any project contains a <code>URL_ROOT = ''</code> configuration, that project will:
+
+* Be available at the root URL (`/index.html`, `/css/style.css`, etc).
+* Always be published when deploying.
 

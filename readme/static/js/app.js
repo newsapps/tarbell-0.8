@@ -9,7 +9,7 @@ require([ 'jquery', 'base/views/NavigationView', 'highlight' ],
 function($, NavigationView, hljs) {
     var nav = new NavigationView({
         el: $('#header'),
-        title: { label: 'Tarbell Readme', url: '#top' },
+        title: { label: 'Tarbell', url: '#about' },
     }).render();
 
     $('.doc-section pre code').each(function() {

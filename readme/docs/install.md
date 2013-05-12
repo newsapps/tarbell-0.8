@@ -33,16 +33,3 @@ You should see the latest version of this page.</p>
 </div>
 
 </div>
-
-
-## Amazon S3 setup
-
-An Amazon S3 publishing workflow is included in the Tarbell template. See the advanced section for information on publishing to S3.
-
-Get your Amazon S3 credentials.
-
-Add some lines to your `~/.bash_profile`:
-
-<pre><code class="markdown">export AWS_ACCESS_KEY_ID="MYACCESSKEYID"
-export AWS_SECRET_ACCESS_KEY="MYSECRETACCESSKEY"
-</code></pre>

@@ -2,13 +2,28 @@
 {{ "{% extends '_base.html' %}" }}
 
 {{ "{% block css %}" }}
-<link rel="stylesheet" type="text/css" href="/{{ project_name }}/style.css" />
+{{ "{{ super() }}" }}
+<link rel="stylesheet" type="text/css" href="{{ "{{ static_url('" }}{{ project_name }}{{ "', '/css/style.css') }}" }}" />
 {{ "{% endblock %}" }}
 
 {{ "{% block content %}" }}
-<h1>{{ long_name }}</h1>
+<h1>{{ "{{ title }}" }}</h1>
 
-<p>Great work, you can start authoring now!</p>
+<section id="great-work" data-title="Great work">
 
-<p><a href="/docs">See the documentation</a> for more details.</p>
+<h2>Great work! Get ready to build your project</h2>
+
+<p>Grab a cup of coffee and tea and get started working on your new project.</p>
+
+<p>Start by editing <code>{{ project_name }}/templates/index.html</code>, this very file.</p>
+
+<p><strong>New to Tarbell?</strong> Check out the <a href="/readme/#build">project building docs</a>
+in the <a href="/readme/">Tarbell readme</a>.</p>
+
+<p><strong>Hey! How did that navbar get up there?</strong> The navbar is set up by
+the default Javascript app associated with this project. To disable it, edit 
+<code>{{ project_name }}/static/js/app.js</code>.</p>
+
+</section>
+
 {{ "{% endblock %}" }}

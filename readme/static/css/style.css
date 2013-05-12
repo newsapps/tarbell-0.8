@@ -32,19 +32,14 @@ section { margin-bottom: 25px; }
 #getting-started em { font-style: normal; }
 #getting-started ol { margin-top: 0; }
 
-/* Documentation sections */
+/* Documentation */
 .doc-section { padding-bottom: 44px; }
 
-.doc-section h1 { margin-top: 22px; margin-bottom: 11px; padding-top: 22px; border-top: 2px solid #999; }
+.doc-section h1 { margin-top: 22px; margin-bottom: 22px; padding-top: 22px; border-top: 2px solid #999; }
 
 .doc-section h1 + p { margin-top: 11px; margin-bottom: 33px; }
 
-.doc-section h2,
-.doc-section h3,
-.doc-section h4,
-.doc-section h5,
-.doc-section h6,
-.doc-section p { max-width: 720px; }
+.doc-section p { max-width: 800px; }
 
 .doc-section p,
 .doc-section pre { margin-bottom: 22px; }
@@ -61,8 +56,10 @@ section { margin-bottom: 25px; }
 ul.directories { color: #666; }
 ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; } 
 
+/* Documentation: Source highlighting */
 .doc-section pre { font-size: 13px; padding: 11px; background: #000; color: #f8f8f8; }
 .doc-section pre code { font-size: 13px; padding: 0; }
+.doc-section .highlight { background-color: #333; color: #ffa; padding-left: 5px; padding-right: 5px; }
 
 @media all and (max-width: 767px) {
     #title, #subtitle { display: block; margin: 0; }

@@ -4,14 +4,10 @@ Google doc configuration. If not provided, no Google doc will be used.
 {% if spreadsheet_key %}
 GOOGLE_DOC = {
     'key': '{{ spreadsheet_key }}',
-    #'account': '<gmail address>',
-    #'password': '<password>',
 }
 {% else %}
 # GOOGLE_DOC = {
 #     'key': '<spreadsheet key>',
-#     'account': '<gmail address>',
-#     'password': '<password>',
 # }
 {% endif %}
 
@@ -20,8 +16,6 @@ Set default context. These variables will be globally available to the template.
 """
 DEFAULT_CONTEXT = {
     'title': '{{ long_name }}',
-    'ad_path': '',
-    'analytics_path': '',
 }
 
 """
@@ -52,3 +46,16 @@ Example use of flask blueprint to add a template filter.
 # @blueprint.app_template_filter('example_filter')
 # def example_filter(text):
 #    return text + ' ...suffix.'
+
+"""
+Load secrets. Don't change this unless you know what you're doing.
+"""
+def get_secrets():
+    """ Return a secrets module """
+    root = os.path.dirname(os.path.abspath(__file__))
+    return imp.find_module('secrets', [root])
+
+secrets = imp.load_module('secrets', *get_secrets())
+
+if hasattr(secrets, 'GOOGLE_AUTH'):
+    GOOGLE_DOC.update(secrets.GOOGLE_AUTH)
