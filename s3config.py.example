@@ -1,0 +1,9 @@
+"""
+Configure S3 bucket and keys
+"""
+
+#S3CONFIG = {
+#    'bucket': '',
+#    'key': '',
+#    'key_id': '',
+#}
