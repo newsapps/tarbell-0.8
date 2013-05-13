@@ -11,6 +11,7 @@ from optparse import OptionParser
 import re
 from urllib import quote_plus
 from urllib2 import urlopen
+import s3config
 
 excludes = r'|'.join([r'.*\.git$'])
 
@@ -81,7 +82,7 @@ def find_file_paths(directory):
 
 def parse_args():
     parser = OptionParser()
-    parser.add_option("-b", "--bucket", dest="bucket_name", action="store",
+    parser.add_option("-b", "--bucket", dest="bucket_name", action="store", default=None,
                       help="Specify the S3 bucket to which the files should be deployed")
     parser.add_option("-d", "--dir", dest="dir", action="store", default="out",
                       help="Specify the directory which should be copied to the remote bucket. Default 'out'")
@@ -96,6 +97,13 @@ def parse_args():
 
 if __name__ == '__main__':
     opts = parse_args()
+    if hasattr(s3config, 'S3CONFIG'):
+        if not opts.bucket_name and s3config.S3CONFIG.get('bucket'):
+            opts.bucket_name = s3config.S3CONFIG.get('bucket')
+        if not opts.key and s3config.S3CONFIG.get('key'):
+            opts.key = s3config.S3CONFIG.get('key')
+        if not opts.key_id and s3config.S3CONFIG.get('key_id'):
+            opts.key_id = s3config.S3CONFIG.get('key_id')
     if not opts.bucket_name:
         raise ValueError("A bucket must be specified.")
     if os.environ.get('AWS_SECRET_ACCESS_KEY') and not opts.key:
@@ -105,4 +113,4 @@ if __name__ == '__main__':
     if not opts.key or not opts.key_id:
         raise ValueError("Error: Access key ID and key value must specified or set as environment variables.")
     print "Deploying to %s" % opts.bucket_name
-    deploy_to_s3(opts.dir, opts.bucket_name, opts.key, opts.key_id, opts.remove)
+    deploy_to_s3(opts.dir, opts.bucket_name, opts.key_id, opts.key, opts.remove)

@@ -14,15 +14,15 @@ from oauth2client import tools
 import getpass
 import gflags
 import httplib2
+import s3config
+
 
 """
 Base configuration
 """
 fab.env.oauth_scope = 'https://www.googleapis.com/auth/drive.file'
 fab.env.oauth_redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
-fab.env.s3_bucket = 'my.s3bucket.tld'  # YOUR S3 BUCKET URL
 fab.env.project = ''
-
 
 def project(project=None):
     """
@@ -37,7 +37,7 @@ def deploy():
     Deploy from fab.locally rendered files.
     """
     fab.local('python render_templates.py %(project)s' % fab.env)
-    fab.local('python s3deploy.py -b %(s3_bucket)s' % fab.env)
+    fab.local('python s3deploy.py')
 
 
 def runserver():
