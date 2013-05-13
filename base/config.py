@@ -22,9 +22,11 @@ def context_processor():
         cachebuster = int(time())
         if path.startswith('/'):
             path = path[1:]
+        else:
+            path = "/%s" % path
         if project == "base":
             project = ""
-        return "/%s/%s?t=%s" % (project, path, cachebuster)
+        return "%s/%s?t=%s" % (project, path, cachebuster)
 
     def page_url(pagename=''):
         return "%s/%s" % (DOMAIN, pagename) 
