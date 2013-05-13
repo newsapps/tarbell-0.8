@@ -1,5 +1,7 @@
 """
 Configure S3 bucket and keys
+
+Copy from s3config.py.example to s3config.py
 """
 
 #S3CONFIG = {
