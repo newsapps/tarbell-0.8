@@ -2,3 +2,4 @@
 *.pyc
 out
 client_secrets.json
+s3config.py
