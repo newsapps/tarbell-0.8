@@ -24,7 +24,7 @@ def context_processor():
             path = path[1:]
         if project == "base":
             project = ""
-        return "%s/%s?t=%s" % (project, path, cachebuster)
+        return "/%s/%s?t=%s" % (project, path, cachebuster)
 
     def page_url(pagename=''):
         return "%s/%s" % (DOMAIN, pagename) 
