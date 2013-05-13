@@ -54,7 +54,7 @@ section { margin-bottom: 25px; }
 .doc-section .aside h2 { margin-top: 0; font-size: 22px; line-height: 28px; }
 
 ul.directories { color: #666; }
-ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; } 
+ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; }
 
 /* Documentation: Source highlighting */
 .doc-section pre { font-size: 13px; padding: 11px; background: #000; color: #f8f8f8; }
@@ -65,4 +65,7 @@ ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; }
     #title, #subtitle { display: block; margin: 0; }
     #title { font-size: 32px; line-height: 32px; }
     #subtitle { font-size: 20px; line-height: 32px; }
+    .panel { width: 100%; clear: both; margin-bottom: 60px; }
+    .panel img { display: block; float: left; width: 55%; margin-right: 10px; }
+    .panel h3 { margin-top: 10px; } 
 }
