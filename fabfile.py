@@ -44,7 +44,7 @@ def runserver():
     """Run a fab.local development server."""
     print "Point your browser to http://localhost:5000/"
     print "Type ctrl-c to quit."
-    fab.local('python run.py' % fab.env)
+    fab.local('python runserver.py' % fab.env)
 
 
 def runpreviewserver():
@@ -125,7 +125,7 @@ def newproject(project_name=None):
                     git checkout -b %s' % context['project_name'] )
                 fab.local('git add %s' % context['project_name'])
                 fab.local('git commit -m "Started new project \
-                    %s"' % context['project_name']) 
+                    %s"' % context['project_name'])
             except:
                 print "Error checking out branch."
         else:
