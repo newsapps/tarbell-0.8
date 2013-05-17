@@ -30,7 +30,7 @@ You should see the latest version of this page.</p>
 	<h2>Connecting Tarbell to Google Spreadsheets</h2>
 	<p>In order to allow your Tarbell projects to communicate with your Google Spreadsheets, you'll need to download a <a href="https://developers.google.com/api-client-library/python/guide/aaa_client_secrets">client_secrets.json file</a> from Google.</p>
 	<p>First, log in to the <a href="https://code.google.com/apis/console/b/0/">Google API Developer Console</a> and either create a new project or, if one already exists, click on the API Access tab.</p>
-	<p>If you don't already have one, create an OAuth 2.0 client ID, and select Web Application as the type. Once the ID has been created, click Download JSON to save the client_secrets.json file to your local machine, and put the file in the base directory of your Tarbell installation.</p>
+	<p>If you don't already have one, create an OAuth 2.0 client ID, and select Web Application as the type. Once the ID has been created, click Download JSON to save the client_secrets.json file to your local machine, and put the file in the root directory of your Tarbell installation.</p>
 </div>
 
 <div class="span4 offset1 aside">
