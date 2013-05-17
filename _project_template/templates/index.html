@@ -2,29 +2,49 @@
 {{ "{% extends '_base.html' %}" }}
 
 {{ "{% block css %}" }}
+
+{{ "{# Call base template css block #}" }}
 {{ "{{ super() }}" }}
+
+{{ "{# Now add our stylesheet using static_url function #}" }}
 <link rel="stylesheet" type="text/css" href="{{ "{{ static_url('" }}{{ project_name }}{{ "', '/css/style.css') }}" }}" />
 {{ "{% endblock %}" }}
+
+{{ "{# Uncomment the next line to use your skip the Tarbell app and use your own Javascript. #}" }}
+{{ "{# {% block scripts %}{% endblock scripts %} #}" }}
 
 {{ "{% block content %}" }}
 <div class="container-fluid">
     <h1>{{ "{{ title }}" }}</h1>
 
-    <section id="great-work" data-title="Great work">
+    <!-- The demonstration Backbone view creates a navigation bar by parsing the 
+       ID and data-title attribute of each section tag. //-->
+    <section id="great-work" data-title="Get started">
+        <h2>Great work! Get ready to build your project</h2>
+        <p>Grab a cup of coffee and tea and started on your new project.</p>
 
-    <h2>Great work! Get ready to build your project</h2>
+        <p><strong>I want my content here!</strong> Start by editing <code>newtemplate/templates/index.html</code>, the file you're looking at now.</p>
+        
+        <p><strong>Hey! How did that navbar get up there?</strong> The navbar is set up by
+        the default Javascript app associated with this project. To disable it, add an empty 
+        <code>{{ '{{ "{% block scripts %}{% endblock scripts %}" }}' }}``:vsp</code> to your <code>index.html</code> template.
 
-    <p>Grab a cup of coffee and tea and get started working on your new project.</p>
+        <p><strong>New to Tarbell?</strong> Check out the <a href="/readme/#build">project building docs</a>
+        in the <a href="/readme/">Tarbell readme</a>.</p>
+    </section>
 
-    <p>Start by editing <code>{{ project_name }}/templates/index.html</code>, this very file.</p>
-
-    <p><strong>New to Tarbell?</strong> Check out the <a href="/readme/#build">project building docs</a>
-    in the <a href="/readme/">Tarbell readme</a>.</p>
-
-    <p><strong>Hey! How did that navbar get up there?</strong> The navbar is set up by
-    the default Javascript app associated with this project. To disable it, edit 
-    <code>{{ project_name }}/static/js/app.js</code>.</p>
-
+    <!-- Ida Tarbell quote: provides an example of simple jQuery dom manipulation 
+       in the default app. //-->
+    <section id="ida-says" data-title="Ida says...">
+        <div class="row-fluid" id="tarbell-quote-wrapper">
+            <div class="span6">
+                <h2>Ida Tarbell says...</h2>
+                <p id="tarbell-quote"></p>
+            </div>
+            <div class="span4 offset1">
+                <img src="{{ "{{ static_url('readme', '/img/ida-tarbell.jpg') }" }}}" alt="Portrait of Ida Tarbell" />
+            </div>
+        </div>
     </section>
 </div>
 {{ "{% endblock %}" }}

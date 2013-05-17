@@ -1,5 +1,5 @@
 /* Account for sticky header navigation */
-body.has-nav { padding-top: 41px; }
+body.has-nav { padding-top: 50px; }
 body.has-nav section { padding-top: 41px; margin-top: -41px; }
 body.has-nav .toggle { display: none; } 
 

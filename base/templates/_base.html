@@ -29,7 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock meta %}
 </head>
-<body{% block bodyattrs %} class="{{ pagename }}"{% endblock bodyattrs %}>
+<body{% block bodyattrs %} class="has-nav {{ pagename }}"{% endblock bodyattrs %}>
 
 {# Override the `container` block to disable default layout. #}
 {% block container %}
