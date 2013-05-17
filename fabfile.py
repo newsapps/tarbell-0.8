@@ -21,14 +21,23 @@ Base configuration
 """
 fab.env.oauth_scope = 'https://www.googleapis.com/auth/drive.file'
 fab.env.oauth_redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+fab.env.target = 'production'
 fab.env.project = ''
+
 
 def project(project=None):
     """
-    Set project
+    Set project (default: none).
     """
     if project:
         fab.env.project = project
+
+
+def target(target):
+    """
+    Set target (default: production).
+    """
+    fab.env.target = target
 
 
 def deploy():
@@ -36,7 +45,7 @@ def deploy():
     Deploy from fab.locally rendered files.
     """
     fab.local('python render_templates.py %(project)s' % fab.env)
-    fab.local('python s3deploy.py')
+    fab.local('python s3deploy.py -b %(target)s' % fab.env)
 
 
 def runserver():
