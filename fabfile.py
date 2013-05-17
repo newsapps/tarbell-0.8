@@ -14,7 +14,6 @@ from oauth2client import tools
 import getpass
 import gflags
 import httplib2
-import s3config
 
 
 """
