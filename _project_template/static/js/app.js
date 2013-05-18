@@ -1,10 +1,22 @@
-// Add some paths to require JS 
+// Example project application. If this file is a little complicated, it's because
+// we're trying to demonstrate a basic app pattern using RequireJS.
+
+// Further configure RequireJS
 require.config( {
+    // Library paths
     paths: {
         moment: '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min',
+        spin: '//cdnjs.cloudflare.com/ajax/libs/spin.js/1.2.7/spin.min',
     },
+    // Shim for non-AMD compatible Javascript libraries
+    shim: {
+        spin: {
+            exports: 'Spinner'
+        },
+    }
 } );
 
+// Quotes for generator
 var TARBELL_QUOTES = [
     "And he calls his great organization a benefaction, and points to his church-going and charities as proof of his righteousness. This is supreme wrong-doing cloaked by religion. There is but one name for it -- hypocrisy.",
     "Perhaps our national ambition to standardize ourselves has behind it the notion that democracy means standardization. But standardization is the surest way to destroy the initiative, to benumb the creative impulse above all else essential to the vitality and growth of democratic ideals.",
@@ -14,19 +26,25 @@ var TARBELL_QUOTES = [
     "The first and most imperative necessity in war is money, for money means everything else -- men, guns, ammunition."
 ];
 
-require([ 'jquery', 'base/views/NavigationView' ],
-function($, NavigationView) {
-    // Demonstrate use of Backbone view
+// Invoke our application by requiring some libraries
+require([ 'jquery', 'base/views/NavigationView', 'moment', 'spin' ],
+function($, NavigationView, moment, Spinner) {
+    // Navigation view: Use Backbone view from base app to generate nav bar
     var nav = new NavigationView({
         el: $('#header'),
         title: { label: document.title, url: '' },
     }).render();
 
-    // Demonstrate use of simple jQuery code
-    var get_quote = function() {
+    // Random Ida Tarbell quote generator: Simple jQuery DOM manipulation
+    var getQuote = function() {
         return TARBELL_QUOTES[ Math.floor( Math.random() * TARBELL_QUOTES.length ) ];
     }
+    $('#tarbell-quote').text('"' + getQuote() + '"');
 
-    $('#tarbell-quote').text('"' + get_quote() + '"');
+    // MomentJS: Using an AMD-compatible library
+    $('#moment').text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+    // SpinJS: Using a non-AMD-compatible library and pure Javascript
+    var spinnerElement = document.getElementById('spinner');
+    var spinner = new Spinner().spin(spinnerElement);
 });
-

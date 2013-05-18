@@ -1,5 +1,13 @@
 /* Styles for {{ project_name }} */
 
 /* Ida Tarbell quote */
-#tarbell-quote-wrapper { margin-top: 60px; }
-#tarbell-quote { font-size: 30px; line-height: 42px; }
+#tarbell-quote { font-style: italic; margin: 10px 0; }
+
+/* Spinner */
+#spinner { height: 100px; }
+
+/* Responsive rule */
+@media all and (max-width: 979px) {
+   #tarbell-quote { float: left; max-width: 300px; margin-right: 20px; }
+   #tarbell-image { width: 150px; } 
+}

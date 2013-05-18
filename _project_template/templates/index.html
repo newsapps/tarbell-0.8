@@ -21,30 +21,62 @@
        ID and data-title attribute of each section tag. //-->
     <section id="great-work" data-title="Get started">
         <h2>Great work! Get ready to build your project</h2>
-        <p>Grab a cup of coffee and tea and started on your new project.</p>
 
-        <p><strong>I want my content here!</strong> Start by editing <code>newtemplate/templates/index.html</code>, the file you're looking at now.</p>
+        <p>Grab a cup of coffee and tea and started on your new project. This page currently demonstrates basic features of Tarbell and the base template to help get you started. When you're ready to start building your project, edit <code>{{ project_name }}/templates/index.html</code> to replace this page.</p>
+
+        {{ "{% if spreadsheet_key %}" }}
+            You created a Google spreadsheet! You can edit it at 
+            <a target="_blank" href="https://docs.google.com/spreadsheet/ccc?key={{ spreadsheet_key }}">
+            https://docs.google.com/spreadsheet/ccc?key={{ spreadsheet_key }}"
+            </a>
+        {{ "{% endif %}" }} 
+
+        <p>Below, you'll find some simple Javascript examples and a demonstration of the <code>read_file</code> helper that repeats <a target="_blank" href="/readme/#build">project building documentation</a> for your convenience.</p>
         
-        <p><strong>Hey! How did that navbar get up there?</strong> The navbar is set up by
-        the default Javascript app associated with this project. To disable it, add an empty 
-        <code>{{ '{{ "{% block scripts %}{% endblock scripts %}" }}' }}``:vsp</code> to your <code>index.html</code> template.
-
-        <p><strong>New to Tarbell?</strong> Check out the <a href="/readme/#build">project building docs</a>
-        in the <a href="/readme/">Tarbell readme</a>.</p>
     </section>
 
-    <!-- Ida Tarbell quote: provides an example of simple jQuery dom manipulation 
-       in the default app. //-->
-    <section id="ida-says" data-title="Ida says...">
-        <div class="row-fluid" id="tarbell-quote-wrapper">
-            <div class="span6">
-                <h2>Ida Tarbell says...</h2>
+    <hr />
+    
+    <!-- Javascript examples -->
+    <section id="javascript-examples" data-title="Javascript examples">
+        <h2>Javascript examples</h2>
+
+        <div class="row-fluid">
+            <div class="span3">
+                <!-- Random Ida Tarbell quote -->
+                <h3>Ida Tarbell says...</h3>
                 <p id="tarbell-quote"></p>
+                <img id="tarbell-image" src="{{ "{{ static_url('readme', '/img/ida-tarbell.jpg') }}" }}" alt="Portrait of Ida Tarbell" />
             </div>
-            <div class="span4 offset1">
-                <img src="{{ "{{ static_url('readme', '/img/ida-tarbell.jpg') }" }}}" alt="Portrait of Ida Tarbell" />
+            <div class="span4">
+                <!-- Moment JS --> 
+                <h3>The current time is...</h3>
+                <p id="moment"></p>
+                
+                <hr />
+
+                <!-- Spin JS --> 
+                <h3>Spin, spin, spin...</h3>
+                <div id="spinner"></div>
+            </div>
+            <div class="span5">
+                <h3>Neat! How does it work?</h3>
+                <p>The navbar, quote generator, current time, and spinner are all set up by
+                the default Javascript app associated with this project, which uses
+                RequireJS to automatically create an environment for app development.
+                Edit the default app in <code>{{ project_name }}/static/app.js</code>. 
+
+                <h3>How do I turn it off?</h3>
+                <p>To disable the default Javascript behavior and do your own thing, add an empty <code>{{ '{{ "{% block scripts %}{% endblock scripts %}" }}' }}</code> to your <code>index.html</code> template and start populating it with script tags.</p>
             </div>
         </div>
     </section>
-</div>
+
+    <hr />
+
+    {# Demonstrate the read_file template helper and markdown template filter #}
+    <section id="build" data-title="Building reference">
+        {{ "{{ read_file('readme/docs/build.md')|markdown }}" }}
+    </section>
+
 {{ "{% endblock %}" }}
