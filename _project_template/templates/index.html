@@ -24,12 +24,12 @@
 
         <p>Grab a cup of coffee and tea and started on your new project. This page currently demonstrates basic features of Tarbell and the base template to help get you started. When you're ready to start building your project, edit <code>{{ project_name }}/templates/index.html</code> to replace this page.</p>
 
-        {{ "{% if spreadsheet_key %}" }}
-            You created a Google spreadsheet! You can edit it at 
-            <a target="_blank" href="https://docs.google.com/spreadsheet/ccc?key={{ spreadsheet_key }}">
-            https://docs.google.com/spreadsheet/ccc?key={{ spreadsheet_key }}"
-            </a>
-        {{ "{% endif %}" }} 
+        {% if spreadsheet_key %}
+        <p>You created a Google spreadsheet! You can edit it at 
+        <a target="_blank" href="https://docs.google.com/spreadsheet/ccc?key={{ spreadsheet_key }}">
+        https://docs.google.com/spreadsheet/ccc?key={{ spreadsheet_key }}"
+        </a></p>
+        {% endif %}
 
         <p>Below, you'll find some simple Javascript examples and a demonstration of the <code>read_file</code> helper that repeats <a target="_blank" href="/readme/#build">project building documentation</a> for your convenience.</p>
         
