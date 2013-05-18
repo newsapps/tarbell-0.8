@@ -4,7 +4,7 @@ project structure and setting up a Google spreadsheet.*
 
 ## Creating Google Spreadsheets
 
-In order to allow Tarbell to create new Google Spreadsheets, you'll need to download a <a href="https://developers.google.com/api-client-library/python/guide/aaa_client_secrets">client_secrets.json">file</a> from Google to allow access to Drive.
+In order to allow Tarbell to create new Google Spreadsheets, you'll need to download a <a href="https://developers.google.com/api-client-library/python/guide/aaa_client_secrets">client_secrets.json file</a> from Google to allow access to Drive.
 
 First, log in to the <a href="https://code.google.com/apis/console/b/0/">Google API Developer Console</a> and either create a new project or, if one already exists, click on the API Access tab.
 
