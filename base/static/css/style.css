@@ -10,8 +10,8 @@ a > * { color: #333; }
 @media all and (max-width: 767px) {
     body.has-nav section { padding-top: 0; margin-top: 0; }
     .nav-collapse { display: none; }
-    body.has-nav .toggle { display: block; } 
 }
 @media all and (max-width: 979px) {
     body.has-nav { padding-top: 0; }
+    body.has-nav .toggle { display: block; } 
 }
