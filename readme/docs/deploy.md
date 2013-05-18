@@ -8,9 +8,11 @@ An Amazon S3 publishing workflow is included in the Tarbell template. To use it,
 Create a file called `s3config.py` in your Tarbell template directory.
 
 <pre><code class="python">S3CONFIG = {
-    'bucket': 'mybucket.domain.com',
-    'key': 'KEY',
-    'key_id': 'KEYID',
+    'BUCKETNAME': {
+        'bucket': 'mybucket.domain.com',
+        'key': 'KEY',
+        'key_id': 'KEYID',
+    }
 }
 </code></pre>
 
@@ -19,9 +21,15 @@ Create a file called `s3config.py` in your Tarbell template directory.
 Once your Amazon S3 access credentials are configured, deploying all projects
 is very simple:
 
+<pre>fab target:BUCKETNAME deploy</pre>
+
+This will deploy to the bucket specified by `BUCKETNAME` in `s3config.py`.
+
+To simplify deploying to the bucket named `production`, simply run:
+
 <pre>fab deploy</pre>
 
-You should see something like:
+When deploying you'll see something like:
 
 <pre>
 [localhost] local: python render_templates.py 
@@ -37,13 +45,13 @@ Generating project 'readme' in /Users/davideads/Repos/tarbell-template/out/readm
 -- Created page /Users/davideads/Repos/tarbell-template/out/readme/index.html
 
 [localhost] local: python s3deploy.py
-Deploying to tarbell.recoveredfactory.net
+Deploying to tarbell.tribapps.com
 Uploading css/style.css
 Uploading js/app.js
 Uploading js/templates/nav.jst
 Uploading js/views/NavigationView.js
 Uploading readme/index.html
-Refreshing Facebook info for: http://tarbell.recoveredfactory.net/readme/index.html?fbrefresh=CANBEANYTHING
+Refreshing Facebook info for: http://tarbell.tribapps.com/readme/index.html?fbrefresh=CANBEANYTHING
 Uploading readme/bootstrap/css/bootstrap.css
 Uploading readme/bootstrap/css/bootstrap.min.css
 Uploading readme/bootstrap/img/glyphicons-halflings-white.png
@@ -65,6 +73,11 @@ Uploading readme/json/values.json
 To deploy a specific project, use the `project:PROJECTNAME` flag:
 
 <pre>fab project:PROJECTNAME deploy</pre>
+
+In the following example, we'll publish a project called `basketball` using a
+bucket configuration named `sports`:
+
+<pre>fab project:basketball target:sports deploy</pre>
 
 **Please note**: The base template is always published -- it is assumed most
 projects will use some base components.

@@ -5,7 +5,14 @@ Copy from s3config.py.example to s3config.py
 """
 
 #S3CONFIG = {
-#    'bucket': '',
-#    'key': '',
-#    'key_id': '',
+#    'production': {
+#        'bucket': '',
+#        'key': '',
+#        'key_id': '',
+#    },
+#    'staging': {
+#        'bucket': '',
+#        'key': '',
+#        'key_id': '',
+#    },
 #}
