@@ -81,8 +81,8 @@ def find_file_paths(directory):
 
 def parse_args():
     parser = OptionParser()
-    parser.add_option("-d", "--dir", dest="dir", action="store", default="out",
-                      help="Specify the directory which should be copied to the remote bucket. Default 'out'")
+    parser.add_option("-d", "--dir", dest="dir", action="store", default="_out",
+                      help="Specify the directory which should be copied to the remote bucket. Default '_out'")
     parser.add_option("-b", "--bucket", dest="bucket", action="store", default=None,
                       help="Specify the S3 bucket to which the files should be deployed")
     (options, args) = parser.parse_args()

@@ -3,9 +3,9 @@ import os
 import sys
 
 def render(project=None):
-    """Render projects or a specfic project to 'out' directory."""
+    """Render projects or a specfic project to '_out' directory."""
     site = TarbellSite(os.path.dirname(os.path.abspath(__file__)))
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out')
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '_out')
     site.render_templates(out, project)
 
 if __name__ == "__main__":

@@ -60,7 +60,7 @@ def runpreviewserver():
     fab.local('python render_templates.py %(project)s' % fab.env)
     print "Point your browser to http://localhost:5001/<projectname>/"
     print "Type ctrl-c to quit."
-    with fab.lcd('out'):
+    with fab.lcd('_out'):
         fab.local('python -m SimpleHTTPServer 5001')
 
 
