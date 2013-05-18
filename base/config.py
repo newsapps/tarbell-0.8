@@ -5,12 +5,42 @@ import dateutil.parser
 import dateutil.tz
 from flask import Blueprint
 import markdown as Markdown
-
-blueprint = Blueprint('base', __name__)
+import os
 
 URL_ROOT = ''
-
 DOMAIN = 'http://mydomain.tld'
+blueprint = Blueprint('base', __name__)
+
+
+def static_url(project, path):
+    """Generate a static url path with cache buster."""
+    cachebuster = int(time())
+    if path.startswith('/'):
+        path = path[1:]
+    if project == "base":
+        project = ""
+    else:
+        project = "/%s" % project
+    return "%s/%s?t=%s" % (project, path, cachebuster)
+
+
+def page_url(pagename=''):
+    """Generate a page url. Currently badly implemented."""
+    return "%s/%s" % (DOMAIN, pagename)
+
+
+def read_file(path, absolute=False):
+    """
+    Read the file at `path`. If `absolute` is True, use absolute path,
+    otherwise path is assumed to be relative to Tarbell template root dir.
+    """
+    if not absolute:
+        path = os.path.join(os.path.dirname(__file__), '..', path)
+    
+    try:
+        return open(path, 'r').read()
+    except IOError:
+        return None
 
 
 @blueprint.app_context_processor
@@ -18,22 +48,10 @@ def context_processor():
     """
     Add helper functions to context for all projects.
     """
-    def static_url(project, path):
-        cachebuster = int(time())
-        if path.startswith('/'):
-            path = path[1:]
-        if project == "base":
-            project = ""
-        else:
-            project = "/%s" % project
-        return "%s/%s?t=%s" % (project, path, cachebuster)
-
-    def page_url(pagename=''):
-        return "%s/%s" % (DOMAIN, pagename) 
-
     context = {
-            'static_url': static_url,
-            'page_url': page_url,
+        'static_url': static_url,
+        'page_url': page_url,
+        'read_file': read_file,
     }
 
     return context
