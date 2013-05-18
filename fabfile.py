@@ -92,13 +92,8 @@ def newproject(project_name=None):
             print "ABORTING: OSError %s" % e
         return
 
-    # if client secrets exists
-    setup_google = raw_input("Do you want a Google doc associated with this "
-                             "project? [Y/n]: ")
-    if setup_google.lower() == 'y':
-        print "Generating Google spreadsheet"
-        context['spreadsheet_key'] = _create_google_spreadsheet(
-            context['long_name'])
+    # Encapsulates Google spreadsheet setup
+    context = _setup_google_spreadsheet(context)
 
     # Get and walk project template
     loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), '_project_template'))
@@ -156,6 +151,42 @@ def newproject(project_name=None):
     print ("Run `fab deploy` and `fab project:projectname deploy` to deploy to "
            "S3 if you have a bucket configured.")
 
+
+def _setup_google_spreadsheet(context):
+    try:
+        with open('client_secrets.json'):
+            setup_google = raw_input("Do you want a Google doc associated with "
+                                     "this project? [Y/n]: ")
+            if setup_google.lower() != 'n':
+                print "Generating Google spreadsheet"
+                context['spreadsheet_key'] = _create_google_spreadsheet(
+                    context['long_name'])
+            return context
+    except IOError:
+        print ""
+        print ("You don't have the `client_secrets.json` file required to "
+               "create Google spreadsheets using the Drive API.")
+        print ""
+        print "First, log in to the [Google API Developer Console](https://code.google.com/apis/console/b/0)"
+        print "and either create a new project or, if one already exists, click"
+        print "on the API Access tab."
+        print ""
+        print "If you don't already have one, create an OAuth 2.0 client ID, "
+        print "and select Web Application as the type. Once the ID has been"
+        print "created, click Download JSON to save the `client_secrets.json` file"
+        print "to your local machine, and put the file in the root directory of your "
+        print "Tarbell installation."
+        print ""
+        print "There's no problem if you want to skip this step, you'll just have to"
+        print "manage template variables or manually configure spreadsheet access in"
+        print "your new project's `config.py`."
+        print ""
+        retry = raw_input("Want to try again? [y/N]: ")
+        if retry.lower() == 'y':
+            return _setup_google_spreadsheet(context)
+        else:
+            print "No Google spreadsheet configured."
+        return context
 
 def _handle_oauth_flow(storage):
     """
