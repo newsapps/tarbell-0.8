@@ -66,7 +66,6 @@ def runpreviewserver():
 
 def newproject(project_name=None):
     """Create new project in the current directory."""
-    FLAGS = gflags.FLAGS
     context = {}
 
     if project_name is None:
@@ -200,7 +199,7 @@ def _handle_oauth_flow(storage):
     if not credentials:
         flow = client.flow_from_clientsecrets('client_secrets.json',
             scope=fab.env.oauth_scope, redirect_uri=fab.env.oauth_redirect_uri)
-        credentials = tools.run(flow, storage)
+        credentials = tools.run(flow, storage, gflags.FLAGS)
         storage.put(credentials)
     http = httplib2.Http()
     http = credentials.authorize(http)
