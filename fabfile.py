@@ -159,8 +159,9 @@ def _setup_google_spreadsheet(context):
                                      "this project? [Y/n]: ")
             if setup_google.lower() != 'n':
                 print "Generating Google spreadsheet"
+                email = raw_input("What gmail account should have access to this spreadsheet? (e.g. foo@gmail.com) ")
                 context['spreadsheet_key'] = _create_google_spreadsheet(
-                    context['long_name'])
+                    context['long_name'], email)
             return context
     except IOError:
         print ""
@@ -207,7 +208,7 @@ def _handle_oauth_flow(storage):
     return http
 
 
-def _add_user_to_file(file_id, service, user_email='tribgfx@gmail.com',
+def _add_user_to_file(file_id, service, user_email,
                         perm_type='user', role='reader'):
     """
     Grants the given set of permissions for a given file_id. service is an
@@ -226,11 +227,10 @@ def _add_user_to_file(file_id, service, user_email='tribgfx@gmail.com',
         print 'An error occurred: %s' % error
 
 
-def _create_google_spreadsheet(project_name):
+def _create_google_spreadsheet(project_name, email):
     """
     Once credentials are received, uploads a copy of microcopy_template.xlsx
-    named for this project, puts it in the Trib Docs -> microcopy folder, adds
-    the default tribapps gmail account as a reader, makes it world-readable and
+    named for this project, makes it world-readable and
     returns the file ID.
     """
     storage = keyring_storage.Storage('fab', getpass.getuser())
@@ -247,7 +247,7 @@ def _create_google_spreadsheet(project_name):
     try:
         newfile = service.files()\
             .insert(body=body, media_body=media_body, convert=True).execute()
-        _add_user_to_file(newfile['id'], service)
+        _add_user_to_file(newfile['id'], service, user_email=email)
         _add_user_to_file(newfile['id'], service, user_email='anyone',
                           perm_type='anyone', role='reader')
         service.revisions()\
