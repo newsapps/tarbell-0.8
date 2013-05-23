@@ -15,6 +15,7 @@ import getpass
 import gflags
 import httplib2
 
+FLAGS = gflags.FLAGS
 
 """
 Base configuration
@@ -199,7 +200,7 @@ def _handle_oauth_flow(storage):
     if not credentials:
         flow = client.flow_from_clientsecrets('client_secrets.json',
             scope=fab.env.oauth_scope, redirect_uri=fab.env.oauth_redirect_uri)
-        credentials = tools.run(flow, storage, gflags.FLAGS)
+        credentials = tools.run(flow, storage)
         storage.put(credentials)
     http = httplib2.Http()
     http = credentials.authorize(http)
