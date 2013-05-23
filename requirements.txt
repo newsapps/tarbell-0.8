@@ -15,6 +15,5 @@ python-gflags==2.0
 scrubber==1.6.1
 six==1.3.0
 wsgiref==0.1.2
--e hg+https://code.google.com/p/google-api-python-client/#egg=google-api-python-client-dev
 -e git+git://github.com/newsapps/requests.git#egg=requests-dev
 -e git+git://github.com/newsapps/tarbell.git#egg=tarbell-dev
