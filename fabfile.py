@@ -82,6 +82,9 @@ def newproject(project_name=None):
 
     proj_dir = os.path.join(os.path.dirname(__file__), context['project_name'])
 
+    # Encapsulates Google spreadsheet setup
+    context = _setup_google_spreadsheet(context)
+
     try:
         os.mkdir(proj_dir)
     except OSError, e:
@@ -91,9 +94,6 @@ def newproject(project_name=None):
         else:
             print "ABORTING: OSError %s" % e
         return
-
-    # Encapsulates Google spreadsheet setup
-    context = _setup_google_spreadsheet(context)
 
     # Get and walk project template
     loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), '_project_template'))
@@ -167,9 +167,9 @@ def _setup_google_spreadsheet(context):
         print ("You don't have the `client_secrets.json` file required to "
                "create Google spreadsheets using the Drive API.")
         print ""
-        print "First, log in to the [Google API Developer Console](https://code.google.com/apis/console/b/0)"
-        print "and either create a new project or, if one already exists, click"
-        print "on the API Access tab."
+        print "First, log in to the [Google API Developer Console](https://code.google.com/apis/console/)"
+        print "and click \"Create project\". After creating a project (or if one" 
+        print "already exists), click on the API Access tab."
         print ""
         print "If you don't already have one, create an OAuth 2.0 client ID, "
         print "and select Web Application as the type. Once the ID has been"
