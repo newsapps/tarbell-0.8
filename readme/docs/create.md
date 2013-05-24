@@ -42,6 +42,10 @@ Done.
 
 ## Manually creating Google Spreadsheets
 
+**This is not the ideal way to set up spreadsheets for Tarbell projects but there
+are bugs in the automatic creation process. See below for more details or just 
+follow these instructions for now.**
+
 To manually set up a Google spreadsheet for your project:
 
 * Create a new Google spreadsheet
@@ -56,7 +60,7 @@ To manually set up a Google spreadsheet for your project:
 
 ## Automatically creating Google Spreadsheets
 
-*Automatic spreadsheet creation is currently broken.* See [ticket #20](https://github.com/newsapps/tarbell-template/issues/20) for more details and to help troubleshoot this tricky problem. 
+**Automatic spreadsheet creation is currently broken. See [ticket #20](https://github.com/newsapps/tarbell-template/issues/20) for more details and to help troubleshoot this tricky problem.** 
 
 <div style="color: #666; font-style: italic;">
 In order to allow Tarbell to create new Google Spreadsheets, you'll need to download a <a href="https://developers.google.com/api-client-library/python/guide/aaa_client_secrets">client_secrets.json file</a> from Google to allow access to Drive.
