@@ -199,8 +199,7 @@ def _handle_oauth_flow(storage):
     # Retrieve credentials from fab.local storage, if possible
     credentials = storage.get()
     if not credentials:
-        flow = client.flow_from_clientsecrets('client_secrets.json',
-            scope=fab.env.oauth_scope, redirect_uri=fab.env.oauth_redirect_uri)
+        flow = client.flow_from_clientsecrets('client_secrets.json')
         credentials = tools.run(flow, storage)
         storage.put(credentials)
     http = httplib2.Http()
