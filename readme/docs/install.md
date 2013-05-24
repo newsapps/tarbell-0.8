@@ -11,7 +11,7 @@ Tarbell.
 <div class="row-fluid">
 
 <div class="span7">
-<p>Make sure you have <code>python</code> (2.6+), <code>git</code>, <code>hg</code> (mercurial), <code>pip</code>, <code>virtualenv</code>
+<p>Make sure you have <code>python</code> (2.6+), <code>git</code>, <code>pip</code>, <code>virtualenv</code>
 and <code>virtualenv-wrapper</code> installed on your system.</p>
 
 <pre>git clone https://github.com/newsapps/tarbell-template
