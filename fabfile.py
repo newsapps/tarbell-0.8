@@ -196,10 +196,10 @@ def _handle_oauth_flow(storage):
     secrets for future use) and then authorizes those credentials. Returns an
     httplib2.Http object authorized with the fab.local user's credentials.
     """
-    # Retrieve credentials from fab.local storage, if possible
+    # Retrieve credentials from local storage, if possible
     credentials = storage.get()
     if not credentials:
-        flow = client.flow_from_clientsecrets('client_secrets.json')
+        flow = client.flow_from_clientsecrets('client_secrets.json', scope=fab.env.oauth_scope)
         credentials = tools.run(flow, storage)
         storage.put(credentials)
     http = httplib2.Http()

@@ -61,6 +61,9 @@ ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; }
 .doc-section pre code { font-size: 13px; padding: 0; }
 .doc-section .highlight { background-color: #333; color: #ffa; padding-left: 5px; padding-right: 5px; }
 
+/* Documentation: Images */
+.doc-img { margin-bottom: 66px; border: 1px solid #999; }
+
 @media all and (max-width: 767px) {
     #title, #subtitle { display: block; margin: 0; }
     #title { font-size: 32px; line-height: 32px; }

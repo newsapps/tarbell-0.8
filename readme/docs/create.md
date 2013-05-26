@@ -2,6 +2,62 @@
 *Get the `client_secrets.json` file if you don't have it already. Use the `fab newproject` command to kick off a new project by copying a basic
 project structure and setting up a Google spreadsheet.*
 
+## Prerequisite: Authenticating with Google with client_secrets.json
+
+Tarbell uses the Google Drive API to create new spreadsheets, which
+requires going through a little OAuth2 song-and-dance. This is optional but
+highly recommended, in part because Tarbell will probably use this technique for
+all authentication and access in the future. If you want to skip this step and configure your spreadsheet manually, see
+[Manually creating Google spreadsheets](#manual-create).
+
+You ready? Let's go. 
+
+In order to allow Tarbell to create new Google Spreadsheets, you'll need to 
+download a <a href="https://developers.google.com/api-client-library/python/guide/aaa_client_secrets">client_secrets.json 
+file</a> file to access the Google Drive API. You can share this file with collaborators
+and within your organization, but do _not_ share this file anywhere public.
+
+Log in to the <a href="https://code.google.com/apis/console/">Google API Developer Console</a>
+and create a new project:
+
+<img src="/readme/img/oauth-01-create-app.png" alt="Create client screenshot" class="doc-img" />
+
+Now click the "Services" tab and enable Google Drive API.
+
+<img src="/readme/img/oauth-02-enable-drive-api.png" alt="Enable Drive API" class="doc-img" />
+
+Click the "API Access" tab to create a client ID:
+
+<img src="/readme/img/oauth-03-create-client-id.png" alt="Create client ID" class="doc-img" />
+
+Add some project details. These don't really matter:
+
+<img src="/readme/img/oauth-04-client-id-screen-1.png" alt="Client ID details screen" class="doc-img" />
+
+This is the important screen. Select "installed app" and "other":
+
+<img src="/readme/img/oauth-04-client-id-screen-2.png" alt="Create ID important screen" class="doc-img" />
+
+Whew! Now you can download the `client_secrets.json` file:
+
+<img src="/readme/img/oauth-05-download-client_secrets.png" alt="Download client_secrets.json" class="doc-img" />
+
+Now put the file in the root directory of your Tarbell installation.
+
+The first time you run <code>fab newproject</code> and answer yes to create a Google spreadsheet, your
+default browser will open and you will be prompted to grant your Tarbell client access to your API key. 
+
+<img src="/readme/img/oauth-06-grant-client-access.png" alt="Grant client access" class="doc-img" />
+
+**The first time you create a new project and spreadsheet, make sure you are not running any services on port 8080, such as MAMP.** The Python Google API client library fires up a tiny server on port 8080 to receive and store an access token.
+
+The <code>fab newproject</code> command will prompt you if the <code>client_secrets.json</code> file doesn't exist.
+
+**Help us improve!** We know this step is a little rocky. We'd like to make it
+smoother. If you are an OAuth or Google Drive API expert, we need your help. 
+See [#21 Improve OAuth workflow for newproject command](https://github.com/newsapps/tarbell-template/issues/21) 
+and [#22 Use Drive API in Tarbell library](https://github.com/newsapps/tarbell-template/issues/22).
+
 ## Create a project
 
 To create your first project, use the handy `fab` command:
@@ -40,11 +96,9 @@ Run `fab deploy` and `fab project:projectname deploy` to deploy to S3 if you hav
 Done.
 </pre>
 
-## Manually creating Google Spreadsheets
+<div id="manual-create"></div>
 
-**This is not the ideal way to set up spreadsheets for Tarbell projects but there
-are bugs in the automatic creation process. See below for more details or just 
-follow these instructions for now.**
+## Manually creating Google Spreadsheets
 
 To manually set up a Google spreadsheet for your project:
 
@@ -57,17 +111,3 @@ To manually set up a Google spreadsheet for your project:
 * Private access:
   * Grant access to a special user account (you'll be storing password in the clear, so set up a new account for this) 
   * Add credentials to `projectname/secrets.py`
-
-## Automatically creating Google Spreadsheets
-
-**Automatic spreadsheet creation is currently broken. See [ticket #20](https://github.com/newsapps/tarbell-template/issues/20) for more details and to help troubleshoot this tricky problem.** 
-
-*In order to allow Tarbell to create new Google Spreadsheets, you'll need to download a <a href="https://developers.google.com/api-client-library/python/guide/aaa_client_secrets">client_secrets.json file</a> from Google to allow access to Drive.*
-
-*First, log in to the <a href="https://code.google.com/apis/console/b/0/">Google API Developer Console</a> and either create a new project or, if one already exists, click on the API Access tab.*
-
-*If you don't already have one, create an OAuth 2.0 client ID, and select Web Application as the type. Once the ID has been created, click Download JSON to save the <code>client_secrets.json</code> file to your local machine, and put the file in the root directory of your Tarbell installation.*
-
-*The <code>fab newproject</code> command detailed below will prompt you if the <code>client_secrets.json</code> file doesn't exist.* 
-
-
