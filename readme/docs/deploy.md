@@ -3,9 +3,12 @@
 
 ## Amazon S3 setup
 
-An Amazon S3 publishing workflow is included in the Tarbell template. To use it, you'll need your [Amazon S3 credentials](https://portal.aws.amazon.com/gp/aws/developer/account/index.html?action=access-key). 
+<div class="row-fluid">
 
-Create a file called `s3config.py` in your Tarbell template directory.
+<div class="span7">
+<p>An Amazon S3 publishing workflow is included in the Tarbell template. To use it, you'll need your <a href="https://portal.aws.amazon.com/gp/aws/developer/account/index.html?action=access-key">Amazon S3 credentials</a>.</p> 
+
+<p>Create a file called `s3config.py` in your Tarbell template directory.</p>
 
 <pre><code class="python">S3CONFIG = {
     'BUCKETNAME': {
@@ -15,6 +18,13 @@ Create a file called `s3config.py` in your Tarbell template directory.
     }
 }
 </code></pre>
+</div>
+
+<div class="span4 offset1 aside">
+    <h2><i class="icon icon-question-sign"></i> Help! I don't have an Amazon S3 account.</h2>
+    <p>Amazon S3 is simply online file storage -- think of it as FTP on steroids. Setting up an Amazon S3 account is easy. Just check out <a href="http://www.hongkiat.com/blog/amazon-s3-the-beginners-guide/">this beginners guide</a>. If you want to use your S3 "bucket" as a website, read Amazon's guide to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html">S3 website hosting</a>.
+</div>
+</div>
 
 ## Deploying
 

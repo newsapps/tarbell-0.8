@@ -72,7 +72,6 @@ What is the directory name for the project? <span class="highlight">awesomeproje
 What is your project's full title? <span class="highlight">Awesome project</span>
 Do you want a Google doc associated with this project? [Y/n]: <span class="highlight">y</span>
 Generating Google spreadsheet
-u
 What Google account should have access to this spreadsheet initially? (e.g. my.name@gmail.com) <span class="highlight">somebody@gmail.com</span>
 Authenticating your Google account to use Tarbell. If any services are running on
 port 8080, disable them and run this command again.
