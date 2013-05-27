@@ -79,3 +79,28 @@ If any project contains a <code>URL_ROOT = ''</code> configuration, that project
 * Be available at the root URL (`/index.html`, `/css/style.css`, etc).
 * Always be published when deploying.
 
+## JSON publishing
+
+By default, every project's Google spreadsheet will be baked out to a JSON file representing each worksheet. For example, most projects will have a `myproject/json/values.json` that represents the contents of the "values" worksheet.
+
+This means you can build pure Javascript apps using Tarbell in the framework of your choice. Just AJAX load or bootstrapping the JSON data.
+
+To disable this behavior, add a line to your <code>config.py</code>
+
+<pre><code class="python">CREATE_JSON = False</code></pre>
+
+If you disable this behavior and need data available to Javascript applications, simply bootstrap the dataset provided it isn't too big. Here's something you might put in `myproject/index.html`:
+
+<pre><code class="django">&#123;% block scripts %&#125;
+&lt;script type="text/javascript"&gt;
+    // Convert whole worksheet to JSON
+    var authors = &#123;&#123 authors|tojson &#125;&#125;
+
+    // Filter a worksheet
+    var locations = [ &#123;% for address in locations %&#125;
+        { state: '&#123;&#123 address.state &#125;&#125;' },
+    &#123;% endfor %&#125; ];
+
+    // Now process or display 'authors' and 'locations' ...
+&lt;/script&gt;
+&#123;% endblock %&#125;</code></pre>
