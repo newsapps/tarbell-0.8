@@ -145,7 +145,7 @@ def newproject(project_name=None):
         os.path.relpath(os.path.join(proj_dir, 'templates/index.html'))
     print "- Edit %s to edit your default Javascript app." %\
         os.path.relpath(os.path.join(proj_dir, 'static/js/app.js'))
-    print ("- Run `fab runserver` and view your project at "
+    print ("- Run `python runserver.py` and view your project at "
            "http://localhost:5000/%s/") % context['project_name']
     print
     print ("Run `fab deploy` and `fab project:projectname deploy` to deploy to "
