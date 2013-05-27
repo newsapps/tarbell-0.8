@@ -2,4 +2,5 @@
 *.pyc
 _out
 client_secrets.json
+secrets.py
 s3config.py
