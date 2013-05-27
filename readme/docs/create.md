@@ -20,34 +20,34 @@ and within your organization, but do _not_ share this file anywhere public.
 Log in to the <a href="https://code.google.com/apis/console/">Google API Developer Console</a>
 and create a new project:
 
-<img src="/readme/img/oauth-01-create-app.png" alt="Create client screenshot" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-01-create-app.png" alt="Create client screenshot" class="doc-img" />
 
 Now click the "Services" tab and enable Google Drive API.
 
-<img src="/readme/img/oauth-02-enable-drive-api.png" alt="Enable Drive API" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-02-enable-drive-api.png" alt="Enable Drive API" class="doc-img" />
 
 Click the "API Access" tab to create a client ID:
 
-<img src="/readme/img/oauth-03-create-client-id.png" alt="Create client ID" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-03-create-client-id.png" alt="Create client ID" class="doc-img" />
 
 Add some project details. These don't really matter:
 
-<img src="/readme/img/oauth-04-client-id-screen-1.png" alt="Client ID details screen" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-04-client-id-screen-1.png" alt="Client ID details screen" class="doc-img" />
 
 This is the important screen. Select "installed app" and "other":
 
-<img src="/readme/img/oauth-04-client-id-screen-2.png" alt="Create ID important screen" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-04-client-id-screen-2.png" alt="Create ID important screen" class="doc-img" />
 
 Whew! Now you can download the `client_secrets.json` file:
 
-<img src="/readme/img/oauth-05-download-client_secrets.png" alt="Download client_secrets.json" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-05-download-client_secrets.png" alt="Download client_secrets.json" class="doc-img" />
 
 Now put the file in the root directory of your Tarbell installation.
 
 The first time you run <code>fab newproject</code> and answer yes to create a Google spreadsheet, your
 default browser will open and you will be prompted to grant your Tarbell client access to your API key. 
 
-<img src="/readme/img/oauth-06-grant-client-access.png" alt="Grant client access" class="doc-img" />
+<img src="http://tarbell.tribapps.com/readme/img/oauth-06-grant-client-access.png" alt="Grant client access" class="doc-img" />
 
 The <code>fab newproject</code> command will prompt you if the <code>client_secrets.json</code> file doesn't exist.
 
