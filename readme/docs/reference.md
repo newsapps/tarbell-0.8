@@ -48,20 +48,29 @@ empty, but also accepts several configuration options:</p>
 </ul>
 
 <p>For advanced uses, you can turn your project into a Flask Blueprint in order to
-register template filters or special URLS.</p>
+register template filters or dynamically set the template context.</p>
 
 <pre><code class="python">from flask import Blueprint
 blueprint = Blueprint('awesome_project', __name__)
 
 # Register template filter
-@blueprint.app_template_filter('example_filter')
-def example_filter(text):
+@blueprint.app_template_filter('my_filter')
+def my_filter(text):
    return text.strip()
 
-# Will be available at URL_ROOT/test
-@blueprint.route('/test')
-def test_route():
-   return render_template('awesome_project/test.html', context_var='test')</code></pre>
+@blueprint.app_context_processor
+def context_processor():
+    """
+    Add "my_variable" to context
+    """
+    context = {
+        'my_variable': 'My variable would be more awesome in real life, like reading a file or API data.",
+    }
+
+    return context
+</code></pre>
+
+Now you can reference `{{ my_variable }}` in your templates, or call your filter on a template variable `{{ my_variable|my_filter }}`. 
 
 ## Base project
 
