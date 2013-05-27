@@ -159,7 +159,8 @@ def _setup_google_spreadsheet(context):
                                      "this project? [Y/n]: ")
             if setup_google.lower() != 'n':
                 print "Generating Google spreadsheet"
-                email = raw_input("What gmail account should have access to this spreadsheet? (e.g. foo@gmail.com) ")
+                email = raw_input("What Google account should have access to this spreadsheet "
+                                  "initially? (e.g. my.name@gmail.com) ")
                 context['spreadsheet_key'] = _create_google_spreadsheet(
                     context['long_name'], email)
             return context
@@ -168,15 +169,9 @@ def _setup_google_spreadsheet(context):
         print ("You don't have the `client_secrets.json` file required to "
                "create Google spreadsheets using the Drive API.")
         print ""
-        print "First, log in to the [Google API Developer Console](https://code.google.com/apis/console/)"
-        print "and click \"Create project\". After creating a project (or if one" 
-        print "already exists), click on the API Access tab."
-        print ""
-        print "If you don't already have one, create an OAuth 2.0 client ID, "
-        print "and select Web Application as the type. Once the ID has been"
-        print "created, click Download JSON to save the `client_secrets.json` file"
-        print "to your local machine, and put the file in the root directory of your "
-        print "Tarbell installation."
+        print "To create this file, please follow the instructions at http://tarbell.tribapps.com/readme/#create"
+        print "which are available locally in Tarbell (http://localhost:5000/readme/#create)"
+        print "and as a text file (readme/docs/create.md)."
         print ""
         print "There's no problem if you want to skip this step, you'll just have to"
         print "manage template variables or manually configure spreadsheet access in"
@@ -191,14 +186,18 @@ def _setup_google_spreadsheet(context):
 
 def _handle_oauth_flow(storage):
     """
-    Reads the fab.local client secrets file if available (otherwise, opens a
+    Reads the local client secrets file if available (otherwise, opens a
     browser tab to walk through the OAuth 2.0 process, and stores the client
     secrets for future use) and then authorizes those credentials. Returns an
-    httplib2.Http object authorized with the fab.local user's credentials.
+    httplib2.Http object authorized with the local user's credentials.
     """
     # Retrieve credentials from local storage, if possible
     credentials = storage.get()
     if not credentials:
+        print ""
+        print "Authenticating your Google account to use Tarbell. If any services are running on"
+        print "port 8080, disable them and run this command again."
+        print ""
         flow = client.flow_from_clientsecrets('client_secrets.json', scope=fab.env.oauth_scope)
         credentials = tools.run(flow, storage)
         storage.put(credentials)
@@ -239,8 +238,8 @@ def _create_google_spreadsheet(project_name, email):
                         'project_template/microcopy_template.xlsx')
     media_body = _MediaFileUpload(path, mimetype='application/vnd.ms-excel')
     body = {
-        'title': '%s microcopy' % project_name,
-        'description': 'Microcopy file for %s project' % project_name,
+        'title': '%s Tarbell data' % project_name,
+        'description': 'Tarbell data for %s project' % project_name,
         'mimeType': 'application/vnd.ms-excel',
     }
     try:
@@ -252,8 +251,14 @@ def _create_google_spreadsheet(project_name, email):
         service.revisions()\
             .update(fileId=newfile['id'], revisionId='head',
                     body={'published': True, 'publishAuto': True}).execute()
-        print ("Success! View the file at "
+        print ("Success! View the spreadsheet at "
                "https://docs.google.com/spreadsheet/ccc?key=%s") % newfile['id']
+        print ""
+        print "This spreadsheet is published in public on the web. To make it private"
+        print "you'll need to configure the project's secrets.py file, disable"
+        print "publishing using the 'Publish to the web' settings from the file menu,"
+        print "and share the document with the account specified in secrets.py."
+        print ""
         return newfile['id']
     except errors.HttpError, error:
         print 'An error occurred: %s' % error

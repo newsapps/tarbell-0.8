@@ -49,9 +49,9 @@ default browser will open and you will be prompted to grant your Tarbell client 
 
 <img src="/readme/img/oauth-06-grant-client-access.png" alt="Grant client access" class="doc-img" />
 
-**The first time you create a new project and spreadsheet, make sure you are not running any services on port 8080, such as MAMP.** The Python Google API client library fires up a tiny server on port 8080 to receive and store an access token.
-
 The <code>fab newproject</code> command will prompt you if the <code>client_secrets.json</code> file doesn't exist.
+
+**The first time you create a new project and spreadsheet, make sure you are not running any services on port 8080, such as MAMP.** The Python Google API client library fires up a tiny little server on port 8080 to receive and store an access token during this cycle. Because the access token is stored, you won't need to do again unless your token is revoked. You can restore any port 8080 services indefinitely. 
 
 **Help us improve!** We know this step is a little rocky. We'd like to make it
 smoother. If you are an OAuth or Google Drive API expert, we need your help. 
@@ -64,32 +64,70 @@ To create your first project, use the handy `fab` command:
 
 <pre>fab newproject</pre>
 
-You'll be prompted with a series of questions. Here's what you'll see, with user
+You'll be prompted with a series of questions. Here's what you'll see the first time you it with user
 input <span class="highlight">highlighted</span>.
 
-<pre>What is the directory name for the project? <span class="highlight">newproject</span>
-What is your project's full title? <span class="highlight">My New Project</span>
+<pre>
+What is the directory name for the project? <span class="highlight">awesomeproject</span>
+What is your project's full title? <span class="highlight">Awesome project</span>
 Do you want a Google doc associated with this project? [Y/n]: <span class="highlight">y</span>
 Generating Google spreadsheet
-Success! View the file at https://docs.google.com/spreadsheet/ccc?key=0Ak3IIavLYTovdFVNSVkxa0M3Tm4xcHpnSUR0Z1NwOUE
-...
-Would you like to create a new branch and initial commit for this project? [Y/n]: y
-[localhost] local: git checkout master; git checkout -b newproject
-...
-Switched to a new branch 'newproject'
-[localhost] local: git add newproject
-[localhost] local: git commit -m "Started new project newproject"
-[newproject 7dbdb97] Started new project newproject
- 3 files changed, 63 insertions(+), 0 deletions(-)
- create mode 100644 newproject/config.py
- create mode 100644 newproject/static/style.css
- create mode 100644 newproject/templates/index.html
+u
+What Google account should have access to this spreadsheet initially? (e.g. my.name@gmail.com) <span class="highlight">somebody@gmail.com</span>
+Authenticating your Google account to use Tarbell. If any services are running on
+port 8080, disable them and run this command again.
 
-Welcome to My New Project. Great work! What's next?
+Your browser has been opened to visit:
 
-- Edit newproject/config.py to set up default values and Google Doc settings.
-- Edit newproject/templates/index.html to edit your default, root template.
-- Run `fab runserver` and view your project at http://fab.localhost:5000/newproject/
+    https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=code&client_id=000000000000.apps.googleusercontent.com&access_type=offline
+
+If your browser is on a different machine then exit and re-run this
+application with the command-line parameter 
+
+  --noauth_local_webserver
+
+Authentication successful.
+Success! View the spreadsheet at https://docs.google.com/spreadsheet/ccc?key=BIGLONGSPREADSHEETKEY90xlk39102k4
+
+This spreadsheet is published in public on the web. To make it private
+you'll need to configure the project's secrets.py file, disable
+publishing using the 'Publish to the web' settings from the file menu,
+and share the document with the account specified in secrets.py.
+
+Created /Users/davideads/Repos/tarbell-template/awesomeproject/config.py
+Created /Users/davideads/Repos/tarbell-template/awesomeproject/secrets.py
+Created directory /Users/davideads/Repos/tarbell-template/awesomeproject/static/css
+Created /Users/davideads/Repos/tarbell-template/awesomeproject/static/css/style.css
+Created directory /Users/davideads/Repos/tarbell-template/awesomeproject/static/js
+Created /Users/davideads/Repos/tarbell-template/awesomeproject/static/js/app.js
+Created directory /Users/davideads/Repos/tarbell-template/awesomeproject/templates
+Created /Users/davideads/Repos/tarbell-template/awesomeproject/templates/index.html
+Would you like to create a new branch and initial commit for this project? [Y/n]: <span class="highlight">y</span>
+[localhost] local: git checkout master;                     
+git checkout -b awesomeproject
+M	fabfile.py
+M	readme/docs/create.md
+Already on 'master'
+M	fabfile.py
+M	readme/docs/create.md
+Switched to a new branch 'awesomeproject'
+[localhost] local: git add awesomeproject
+[localhost] local: git commit -m "Started new project awesomeproject"
+[awesomeproject cc2502a] Started new project awesomeproject
+ 5 files changed, 212 insertions(+), 0 deletions(-)
+ create mode 100644 awesomeproject/config.py
+ create mode 100644 awesomeproject/secrets.py
+ create mode 100644 awesomeproject/static/css/style.css
+ create mode 100644 awesomeproject/static/js/app.js
+ create mode 100644 awesomeproject/templates/index.html
+
+Welcome to Awesome project. Great work! What's next?
+
+- Edit awesomeproject/config.py to set up template values and adjust project settings.
+- Edit awesomeproject/secrets.py to configure Google spreadsheet authentication variables.
+- Edit awesomeproject/templates/index.html to edit your default template.
+- Edit awesomeproject/static/js/app.js to edit your default Javascript app.
+- Run `python runserver.py` and view your project at http://localhost:5000/awesomeproject/
 
 Run `fab deploy` and `fab project:projectname deploy` to deploy to S3 if you have a bucket configured.
 
