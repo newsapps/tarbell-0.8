@@ -20,8 +20,8 @@ FLAGS = gflags.FLAGS
 """
 Base configuration
 """
+fab.env.template_dir = os.path.dirname(__file__)
 fab.env.oauth_scope = 'https://www.googleapis.com/auth/drive.file'
-fab.env.oauth_redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
 fab.env.target = 'production'
 fab.env.project = ''
 
@@ -96,7 +96,7 @@ def newproject(project_name=None):
         return
 
     # Get and walk project template
-    loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), '_project_template'))
+    loader = jinja2.FileSystemLoader(os.path.join(fab.env.template_dir, '_project_template'))
     fab.env = jinja2.Environment(loader=loader)
 
     for template in loader.list_templates():
@@ -114,10 +114,14 @@ def newproject(project_name=None):
                 if e.errno != 17:
                     print "Error creating %s: %s" % (new_dir, os.strerror)
 
-        content = fab.env.get_template(template).render(**context)
-        new_file = os.path.join(proj_dir, template)
-        codecs.open(new_file,"w",encoding="utf-8").write(content)
-        print 'Created %s' % new_file
+        try:
+            content = fab.env.get_template(template).render(**context)
+            new_file = os.path.join(proj_dir, template)
+            codecs.open(new_file,"w",encoding="utf-8").write(content)
+            print 'Created %s' % new_file
+        except:
+            print "Ack!"
+            print template
 
     if os.path.isdir(os.path.join(os.path.dirname(__file__), '.git')):
         branch = raw_input("Would you like to create a new branch and initial "
@@ -154,12 +158,12 @@ def newproject(project_name=None):
 
 def _setup_google_spreadsheet(context):
     try:
-        with open('client_secrets.json'):
+        with open(os.path.join(fab.env.template_dir, 'client_secrets.json')):
             setup_google = raw_input("Do you want a Google doc associated with "
                                      "this project? [Y/n]: ")
             if setup_google.lower() != 'n':
                 print "Generating Google spreadsheet"
-                email = raw_input("What gmail account should have access to this spreadsheet? (e.g. foo@gmail.com) ")
+                email = raw_input("What Google account should have access to this spreadsheet? (e.g. myname@gmail.com) ")
                 context['spreadsheet_key'] = _create_google_spreadsheet(
                     context['long_name'], email)
             return context
@@ -168,15 +172,9 @@ def _setup_google_spreadsheet(context):
         print ("You don't have the `client_secrets.json` file required to "
                "create Google spreadsheets using the Drive API.")
         print ""
-        print "First, log in to the [Google API Developer Console](https://code.google.com/apis/console/)"
-        print "and click \"Create project\". After creating a project (or if one" 
-        print "already exists), click on the API Access tab."
-        print ""
-        print "If you don't already have one, create an OAuth 2.0 client ID, "
-        print "and select Web Application as the type. Once the ID has been"
-        print "created, click Download JSON to save the `client_secrets.json` file"
-        print "to your local machine, and put the file in the root directory of your "
-        print "Tarbell installation."
+        print "Please read http://tarbell.tribapps.com/readme/#create or view"
+        print "readme/docs/create.md locally for instructions on authenicating"
+        print "Tarbell with Google Drive."
         print ""
         print "There's no problem if you want to skip this step, you'll just have to"
         print "manage template variables or manually configure spreadsheet access in"
@@ -191,15 +189,16 @@ def _setup_google_spreadsheet(context):
 
 def _handle_oauth_flow(storage):
     """
-    Reads the fab.local client secrets file if available (otherwise, opens a
+    Reads the local client secrets file if available (otherwise, opens a
     browser tab to walk through the OAuth 2.0 process, and stores the client
     secrets for future use) and then authorizes those credentials. Returns an
-    httplib2.Http object authorized with the fab.local user's credentials.
+    httplib2.Http object authorized with the local user's credentials.
     """
     # Retrieve credentials from local storage, if possible
     credentials = storage.get()
     if not credentials:
-        flow = client.flow_from_clientsecrets('client_secrets.json', scope=fab.env.oauth_scope)
+        flow = client.flow_from_clientsecrets(os.path.join(fab.env.template_dir, 'client_secrets.json'),
+                                              scope=fab.env.oauth_scope)
         credentials = tools.run(flow, storage)
         storage.put(credentials)
     http = httplib2.Http()
@@ -228,19 +227,18 @@ def _add_user_to_file(file_id, service, user_email,
 
 def _create_google_spreadsheet(project_name, email):
     """
-    Once credentials are received, uploads a copy of microcopy_template.xlsx
+    Once credentials are received, uploads a copy of tarbell_template.xlsx
     named for this project, makes it world-readable and
     returns the file ID.
     """
     storage = keyring_storage.Storage('fab', getpass.getuser())
     http = _handle_oauth_flow(storage)
     service = discovery.build('drive', 'v2', http=http)
-    path = os.path.join(os.path.dirname(inspect.getfile(_TarbellSite)),
-                        'project_template/microcopy_template.xlsx')
-    media_body = _MediaFileUpload(path, mimetype='application/vnd.ms-excel')
+    media_body = _MediaFileUpload(os.path.join(fab.env.template_dir, '_project_template/tarbell_template.xlsx'),
+                                   mimetype='application/vnd.ms-excel')
     body = {
-        'title': '%s microcopy' % project_name,
-        'description': 'Microcopy file for %s project' % project_name,
+        'title': '%s [Tarbell project]' % project_name,
+        'description': '%s [Tarbell project]' % project_name,
         'mimeType': 'application/vnd.ms-excel',
     }
     try:
