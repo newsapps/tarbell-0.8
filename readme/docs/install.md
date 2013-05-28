@@ -14,9 +14,9 @@ Tarbell.
 <p>Make sure you have <code>python</code> (2.6+), <code>git</code>, <code>pip</code>, <code>virtualenv</code>
 and <code>virtualenv-wrapper</code> installed on your system.</p>
 
-<pre>git clone https://github.com/newsapps/tarbell-template
-cd tarbell-template
-mkvirtualenv tarbell-template
+<pre>git clone https://github.com/newsapps/tarbell
+cd tarbell
+mkvirtualenv tarbell
 pip install -r requirements.txt
 python runserver.py
 </pre>

@@ -55,8 +55,8 @@ The <code>fab newproject</code> command will prompt you if the <code>client_secr
 
 **Help us improve!** We know this step is a little rocky. We'd like to make it
 smoother. If you are an OAuth or Google Drive API expert, we need your help. 
-See [#21 Improve OAuth workflow for newproject command](https://github.com/newsapps/tarbell-template/issues/21) 
-and [#22 Use Drive API in Tarbell library](https://github.com/newsapps/tarbell-template/issues/22).
+See [#21 Improve OAuth workflow for newproject command](https://github.com/newsapps/tarbell/issues/21) 
+and [#22 Use Drive API in Tarbell library](https://github.com/newsapps/tarbell/issues/22).
 
 ## Create a project
 
@@ -93,14 +93,14 @@ you'll need to configure the project's secrets.py file, disable
 publishing using the 'Publish to the web' settings from the file menu,
 and share the document with the account specified in secrets.py.
 
-Created /Users/davideads/Repos/tarbell-template/awesomeproject/config.py
-Created /Users/davideads/Repos/tarbell-template/awesomeproject/secrets.py
-Created directory /Users/davideads/Repos/tarbell-template/awesomeproject/static/css
-Created /Users/davideads/Repos/tarbell-template/awesomeproject/static/css/style.css
-Created directory /Users/davideads/Repos/tarbell-template/awesomeproject/static/js
-Created /Users/davideads/Repos/tarbell-template/awesomeproject/static/js/app.js
-Created directory /Users/davideads/Repos/tarbell-template/awesomeproject/templates
-Created /Users/davideads/Repos/tarbell-template/awesomeproject/templates/index.html
+Created /Users/davideads/Repos/tarbell/awesomeproject/config.py
+Created /Users/davideads/Repos/tarbell/awesomeproject/secrets.py
+Created directory /Users/davideads/Repos/tarbell/awesomeproject/static/css
+Created /Users/davideads/Repos/tarbell/awesomeproject/static/css/style.css
+Created directory /Users/davideads/Repos/tarbell/awesomeproject/static/js
+Created /Users/davideads/Repos/tarbell/awesomeproject/static/js/app.js
+Created directory /Users/davideads/Repos/tarbell/awesomeproject/templates
+Created /Users/davideads/Repos/tarbell/awesomeproject/templates/index.html
 Would you like to create a new branch and initial commit for this project? [Y/n]: <span class="highlight">y</span>
 [localhost] local: git checkout master;                     
 git checkout -b awesomeproject

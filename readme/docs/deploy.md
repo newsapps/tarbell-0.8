@@ -45,14 +45,14 @@ When deploying you'll see something like:
 [localhost] local: python render_templates.py 
 Rendering templates.
 
-Generating project 'base' in /Users/davideads/Repos/tarbell-template/out/
+Generating project 'base' in /Users/davideads/Repos/tarbell/out/
 -- No Google doc configured for base.
 
-Generating project 'readme' in /Users/davideads/Repos/tarbell-template/out/readme
--- Created JSON /Users/davideads/Repos/tarbell-template/out/readme/json/values.json
--- Created JSON /Users/davideads/Repos/tarbell-template/out/readme/json/LAST_UPDATED.json
--- Created JSON /Users/davideads/Repos/tarbell-template/out/readme/json/projects.json
--- Created page /Users/davideads/Repos/tarbell-template/out/readme/index.html
+Generating project 'readme' in /Users/davideads/Repos/tarbell/out/readme
+-- Created JSON /Users/davideads/Repos/tarbell/out/readme/json/values.json
+-- Created JSON /Users/davideads/Repos/tarbell/out/readme/json/LAST_UPDATED.json
+-- Created JSON /Users/davideads/Repos/tarbell/out/readme/json/projects.json
+-- Created page /Users/davideads/Repos/tarbell/out/readme/index.html
 
 [localhost] local: python s3deploy.py
 Deploying to tarbell.tribapps.com
