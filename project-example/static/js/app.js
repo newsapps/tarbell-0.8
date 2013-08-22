@@ -27,7 +27,7 @@ var TARBELL_QUOTES = [
 ];
 
 // Invoke our application by requiring some libraries
-require([ 'jquery', 'base/views/NavigationView', 'moment', 'spin' ],
+require([ 'jquery', 'js/views/NavigationView', 'moment', 'spin' ],
 function($, NavigationView, moment, Spinner) {
     // Navigation view: Use Backbone view from base app to generate nav bar
     var nav = new NavigationView({
