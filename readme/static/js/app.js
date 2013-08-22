@@ -1,19 +1,22 @@
-require.config( {
-    paths: {
-        moment: '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min',
-        highlight: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min',
-    },
-} );
+/* 
+ * The commented code shows how to load a new Javascript library and then
+ * invoke it
+ */
 
-require([ 'jquery', 'base/views/NavigationView', 'highlight' ],
-function($, NavigationView, hljs) {
-    var nav = new NavigationView({
-        el: $('#header'),
-        title: { label: 'Tarbell', url: '#about' },
-    }).render();
+/*require.config( {
+  paths: {
+    highlight: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min',
+  },
+  shim: {
+    highlight: { exports: 'hljs' }
+  }
+});*/
 
-    $('.doc-section pre code').each(function() {
-        hljs.highlightBlock(this);
-    });
+require([ 'jquery', /* 'highlight' */ ],
+function($, /* hljs */) {
+  // Write javascript here!!
+
+  /*$('.doc-section pre code').each(function() {
+    hljs.highlightBlock(this);
+  });*/
 });
-
