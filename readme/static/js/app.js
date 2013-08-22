@@ -5,7 +5,7 @@ require.config( {
     },
 } );
 
-require([ 'jquery', 'base/views/NavigationView', 'highlight' ],
+require([ 'jquery', 'js/views/NavigationView', 'highlight' ],
 function($, NavigationView, hljs) {
     var nav = new NavigationView({
         el: $('#header'),
