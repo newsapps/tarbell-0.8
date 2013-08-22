@@ -46,14 +46,9 @@
 
 {% block scripts %}
 {#
-    Scripts are the most complex section of the template. The default configuration
-    uses RequireJS to initialize the app's default Backbone app. To dispense with
-    this madness, simply override the block.
-
-    If you like this frontend app structure, you can add a RequireJS configuration 
-    to your project adding a `requirejs` worksheet to your spreadsheet or setting
-    the `requirejs` key in config.py. Each row needs a `name` and `url` and optionally
-    supports `exports` and `deps` shim configuration variables.
+    The default script configuration uses RequireJS to initialize the app's 
+    default Backbone app. To dispense with this madness, simply override the
+    block.
 #}
 <script type="text/javascript">
 var require = {
@@ -65,17 +60,6 @@ var require = {
         jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery',
         text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text',
         underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
-
-        {# Construct aliases to each project's JS directory #}
-        {% for project_name in TARBELL_PROJECTS %}
-            {% if project_name == '' %}
-                {% set project = 'base' %}
-            {% else %}
-                {% set project = project_name %}
-                {% set project_name = '/' + project_name %}
-            {% endif %}
-            '{{ project }}': '{{ project_name }}/js',
-        {% endfor %}
     },
     shim: {
         backbone: {
@@ -85,9 +69,6 @@ var require = {
         bootstrap: {
             deps: ["jquery"]
         },
-        highlight: {
-            exports: 'hljs'
-        },
         underscore: {
             exports: '_'
         },
@@ -95,7 +76,7 @@ var require = {
 };
 </script>
 
-<script type="text/javascript" data-main="{{ project }}/app" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.js"></script>
+<script type="text/javascript" data-main="{{ project }}/js/app" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.js"></script>
 {% endblock scripts %}
 
 </body>
