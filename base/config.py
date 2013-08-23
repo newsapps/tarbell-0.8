@@ -8,9 +8,7 @@ import markdown as Markdown
 import os
 
 URL_ROOT = ''
-DOMAIN = 'http://tarbell.tribapps.com'
 blueprint = Blueprint('base', __name__)
-
 
 def static_url(project, path):
     """Generate a static url path with cache buster."""
@@ -21,12 +19,12 @@ def static_url(project, path):
         project = ""
     else:
         project = "/%s" % project
-    return "%s/%s?t=%s" % (project, path, cachebuster)
+    return "%s?t=%s" % (path, cachebuster)
 
 
 def page_url(pagename=''):
     """Generate a page url. Currently badly implemented."""
-    return "%s/%s" % (DOMAIN, pagename)
+    return pagename
 
 
 def read_file(path, absolute=False):
