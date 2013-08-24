@@ -6,19 +6,19 @@ import dateutil.tz
 from flask import Blueprint
 import markdown as Markdown
 import os
+from scrubber import Scrubber
 
-URL_ROOT = ''
+
+class TarbellScrubber(Scrubber):
+    disallowed_tags_save_content = set((
+        'blink', 'body', 'html', 'runtime:topic'
+    ))
+
 blueprint = Blueprint('base', __name__)
 
 def static_url(project, path):
     """Generate a static url path with cache buster."""
     cachebuster = int(time())
-    if path.startswith('/'):
-        path = path[1:]
-    if project == "base":
-        project = ""
-    else:
-        project = "/%s" % project
     return "%s?t=%s" % (path, cachebuster)
 
 
@@ -34,7 +34,7 @@ def read_file(path, absolute=False):
     """
     if not absolute:
         path = os.path.join(os.path.dirname(__file__), '..', path)
-    
+
     try:
         return open(path, 'r').read()
     except IOError:
@@ -53,6 +53,16 @@ def context_processor():
     }
 
     return context
+
+
+@blueprint.app_template_filter()
+def process_text(text, scrub=True):
+    try:
+        if scrub:
+            text = TarbellScrubber().scrub(text)
+        return Markup(text)
+    except TypeError:
+        return ""
 
 
 @blueprint.app_template_filter()
