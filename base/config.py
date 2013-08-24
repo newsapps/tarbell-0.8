@@ -16,7 +16,7 @@ class TarbellScrubber(Scrubber):
 
 blueprint = Blueprint('base', __name__)
 
-def static_url(project, path):
+def static_url(path):
     """Generate a static url path with cache buster."""
     cachebuster = int(time())
     return "%s?t=%s" % (path, cachebuster)

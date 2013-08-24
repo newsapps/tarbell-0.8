@@ -17,7 +17,7 @@ define(['backbone', 'text!js/templates/nav.jst', 'bootstrap'], function(Backbone
         render: function() {
             $('body').addClass('has-nav').attr('data-offset', '82').attr('data-spy', 'scroll');
             var rendered = _.template(this.template, this.context);
-            this.$el.append(rendered).find('#nav').scrollspy();
+            this.$el.hide().html(rendered).fadeIn().find('#nav').scrollspy();
             return this;
         },
         parse_sections: function() {

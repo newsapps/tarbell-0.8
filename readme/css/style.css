@@ -3,6 +3,8 @@ body { padding-top: 40px; }
 
 #body.container-fluid { max-width: 1170px; margin: 0 auto; }
 
+img { max-width: 100%; height: auto; }
+
 /* {{ background_color }} */
 /* {{ title }} */
 
@@ -17,9 +19,9 @@ section { margin-bottom: 25px; padding-top: 40px; margin-top: -40px; }
 #promobox { margin-top: 20px; margin-bottom: 30px; border-bottom: 1px solid #ccc; }
 #title { font-size: 60px; }
 #subtitle { margin-left: 15px; }
-#promobox .panel { margin-bottom: 30px; }
-#promobox .panel img { margin-bottom: 10px; }
-#promobox .panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
+#promobox .readme-panel { margin-bottom: 30px; }
+#promobox .readme-panel img { margin-bottom: 10px; }
+#promobox .readme-panel h3 { font-size: 16px; line-height: 20px; text-align: center; margin: 0; }
 
 /* Promobox: Shameless plug */
 #shamelessplug img { float: left; width: 45%; margin-right: 5%; }
@@ -73,7 +75,7 @@ ul.directories, ul.directories .code { font-size: 14px; line-height: 25px; }
     #title, #subtitle { display: block; margin: 0; }
     #title { font-size: 32px; line-height: 32px; }
     #subtitle { font-size: 20px; line-height: 32px; }
-    .panel { width: 100%; clear: both; margin-bottom: 60px; }
-    .panel img { display: block; float: left; width: 55%; margin-right: 10px; }
-    .panel h3 { margin-top: 10px; } 
+    .readme-panel { width: 100%; clear: both; margin-bottom: 60px; }
+    .readme-panel img { display: block; float: left; width: 55%; margin-right: 10px; }
+    .readme-panel h3 { margin-top: 10px; } 
 }

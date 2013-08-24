@@ -6,9 +6,9 @@ Now that you've created a new project, let's look at how Tarbell projects are co
 
 ## Project layout
 
-<div class="row-fluid">
+<div class="row">
 
-<div class="span7"> 
+<div class="col-md-7"> 
 <p>A Tarbell template project directory structure looks like this:</p>
 
 <ul class="directories">
@@ -28,7 +28,7 @@ Now that you've created a new project, let's look at how Tarbell projects are co
 </ul>
 </div>
 
-<div class="span4 offset1 aside">
+<div class="col-md-4 col-md-offset-1 aside">
     <h2><i class="icon icon-question-sign"></i> What's the difference between static assets and templates?</h2> 
     <p>Static assets are simply served as-is, while templates are provided with context variables and rendered using Jinja.</p>
 </div>
@@ -42,9 +42,9 @@ Every file that ends in `.html` in `projectname/templates` will be published to
 
 ### Template basics
 
-<div class="row-fluid">
+<div class="row">
 
-<div class="span8"> 
+<div class="col-md-8"> 
 <p>Tarbell uses <a href="http://jinja.pocoo.org/docs/">Jinja2</a> for templating and supports
 all Jinja2 features.</p>
 
@@ -67,7 +67,7 @@ all Jinja2 features.</p>
 
 </div>
 
-<div class="span4 aside">
+<div class="col-md-4 aside">
     <h2><i class="icon icon-question-sign"></i> What's <code>_base.html</code>?</h2> 
     <p>The Tarbell template comes with a base template file that sets up some simple blocks and manages Javascript app loading.</p>
 </div>

@@ -6,6 +6,6 @@ This is aspirational! It should work on Ubuntu and OS X.
 
 and for people with a preferred Python development process:
 
-   pip install tarbell
+    pip install tarbell
 
 
