@@ -17,7 +17,7 @@ Set default context. These variables will be globally available to the template.
 """
 DEFAULT_CONTEXT = {
     'title': 'Tarbell Readme',
-    'background-color': '#000000',
+    'background_color': '#000000',
 }
 
 DOCS = ['install', 'create', 'build', 'deploy', 'reference',]

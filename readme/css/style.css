@@ -1,6 +1,9 @@
 /* Styles for readme */
 #body.container-fluid { max-width: 1170px; margin: 0 auto; }
 
+/* {{ background_color }} */
+/* {{ title }} */
+
 /* Defaults */
 section { margin-bottom: 25px; }
 
