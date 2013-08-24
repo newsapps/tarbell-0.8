@@ -67,21 +67,3 @@ def context_processor():
         }
         sections.append(doc)
     return {'sections': sections}
-
-
-"""
-Load secrets. This is goofy but it works, and `import secrets` sadly doesn't.
-
-Don't change this unless you know what you're doing.
-"""
-def get_secrets():
-    """ Return a secrets module """
-    root = os.path.dirname(os.path.abspath(__file__))
-    return imp.find_module('secrets', [root])
-
-secrets = imp.load_module('secrets', *get_secrets())
-
-if hasattr(secrets, 'GOOGLE_AUTH'):
-    GOOGLE_DOC.update(secrets.GOOGLE_AUTH)
-
-
