@@ -1,4 +1,4 @@
-define(['backbone', 'text!js/templates/nav.jst', 'bootstrap'], function(Backbone, NavTemplate) {
+define(['backbone', 'text!templates/nav.jst', 'bootstrap'], function(Backbone, NavTemplate) {
     var NavigationView = Backbone.View.extend({
         id: 'navigation',
         parse_selector: '#content section',

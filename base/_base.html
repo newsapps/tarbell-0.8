@@ -50,9 +50,8 @@
 #}
 <script type="text/javascript">
 var require = {
-    baseUrl: '/',
+    urlRoot: './',
     paths: {
-        {# Handy base libraries #}
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
         bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min',
         jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery',
@@ -74,11 +73,7 @@ var require = {
 };
 </script>
 
-<<<<<<< HEAD:base/_base.html
-<script type="text/javascript" data-main="{{ project }}/js/app.js" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.js"></script>
-=======
-<script type="text/javascript" data-main="{{ project }}/js/app" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.js"></script>
->>>>>>> b41aa3b13dbe4e1d1d0282fc163e3224a93900d2:base/templates/_base.html
+<script type="text/javascript" data-main="js/app.js" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.js"></script>
 {% endblock scripts %}
 
 </body>

@@ -23,14 +23,12 @@ DEFAULT_CONTEXT = {
 DOCS = ['install', 'create', 'build', 'deploy', 'reference',]
 
 """
-Root URL project will appear at (e.g. http://mydomain.tld/)
+S3 buckets
 """
-# URL_ROOT = 'readme'
-
-"""
-Don't render to static HTML.
-"""
-# DONT_PUBLISH = False
+S3_BUCKETS = {
+    'production': 's3://tarbell.recoveredfactory.net/projects/',
+    'staging': 's3://tarbell.recoveredfactory.net/projects-staging/',
+}
 
 """
 Don't create JSON for project (default: true)

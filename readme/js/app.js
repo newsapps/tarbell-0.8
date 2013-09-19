@@ -1,4 +1,4 @@
-require([ 'jquery', 'js/views/NavigationView' ],
+require([ 'jquery', 'views/NavigationView' ],
 function($, NavigationView) {
   // Write javascript here!!
   // $('.myclass').click( ... );

@@ -1,15 +1,5 @@
 /* Styles for readme */
-body { padding-top: 40px; }
-
-#body.container-fluid { max-width: 1170px; margin: 0 auto; }
-
-img { max-width: 100%; height: auto; }
-
-/* {{ background_color }} */
-/* {{ title }} */
-
-/* Defaults */
-section { margin-bottom: 25px; padding-top: 40px; margin-top: -40px; }
+/* Styles for {{ title }} */
 
 /* Page titles */
 .title { margin-bottom: 20px; }

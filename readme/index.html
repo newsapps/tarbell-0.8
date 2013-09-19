@@ -3,9 +3,9 @@
 
 {% block css %}
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ static_url('/css/ir_black.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ static_url('/css/style.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ static_url('/css/style.css') }}" />
+<link rel="stylesheet" type="text/css" href="css/ir_black.css" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
 {% endblock %}
 
@@ -19,15 +19,15 @@
             </div>
             <div class="row">
                 <div class="col-md-4 readme-panel">
-                    <img src="{{ static_url('/img/google-screenshot.jpg') }}" alt="Google doc screenshot" />
+                    <img src="img/google-screenshot.jpg" alt="Google doc screenshot" />
                     <h3>{{ intro_google_doc_label|process_text }}</h4>
                 </div>
                 <div class="col-md-4 readme-panel">
-                    <img src="{{ static_url('/img/html-edit-screenshot.jpg') }}" alt="S3 publish screenshot" />
+                    <img src="img/html-edit-screenshot.jpg" alt="S3 publish screenshot" />
                     <h3>{{ intro_html_label|process_text }}</h4>
                 </div>
                 <div class="col-md-4 readme-panel">
-                    <img src="{{ static_url('/img/s3-publish-screenshot.jpg') }}" alt="S3 publish screenshot" />
+                    <img src="img/s3-publish-screenshot.jpg" alt="S3 publish screenshot" />
                     <h3>{{ intro_publish_label|process_text }}</h4>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-md-6">
                 <h2>Who is Ida Tarbell?</h2>
-                <img src="{{ static_url('/img/ida-tarbell.jpg') }}" alt="Portrait of Ida Tarbell" />
+                <img src="img/ida-tarbell.jpg" alt="Portrait of Ida Tarbell" />
                 <p>{{ about_ida_tarbell|process_text }}</p>
             </div>
         </div>
