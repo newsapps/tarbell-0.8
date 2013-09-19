@@ -4,7 +4,7 @@ function($, NavigationView) {
   // $('.myclass').click( ... );
   
   var nav = new NavigationView({
-      el: $('#header'),
-      title: { label: 'Tarbell', url: '#about' },
+    el: $('#header'),
+    title: { label: 'Tarbell', url: '#about' },
   }).render();
 });

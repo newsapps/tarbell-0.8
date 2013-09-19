@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
-    <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
+  <title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
+  <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
 
-    {% block css %}
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" />
-    {% endblock css %}
+  {% block css %}
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" />
+  {% endblock css %}
 
-    {% block opengraph %} 
-    <meta property="og:url" content="{{ page_url("%s/%s.html" % (project, pagename)) }}" />
-    <meta property="og:title" content="{{ title }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ opengraph_image }}" />
-    <meta property="og:description" content="{{ opengraph_description }}" />
-    {% endblock opengraph %}
+  {% block opengraph %} 
+  <meta property="og:url" content="{{ page_url("%s/%s.html" % (project, pagename)) }}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{ opengraph_image }}" />
+  <meta property="og:description" content="{{ opengraph_description }}" />
+  {% endblock opengraph %}
 
-    {% block shim %}
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    {% endblock %}
+  {% block shim %}
+  <!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  {% endblock %}
 
-    {% block meta %}
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% endblock meta %}
+  {% block meta %}
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% endblock meta %}
 </head>
 <body{% block bodyattrs %} class="has-nav {{ pagename }}"{% endblock bodyattrs %}>
 
 {# Override the `container` block to disable default layout. #}
 {% block container %}
-    <div id="header">
-        {% block header %}{% endblock header %}
-    </div>
-    <div id="content">
-        {% block content %}{% endblock content %}
-    </div>
-    <div id="footer">
-        {% block footer %}{% endblock footer %}
-    </div>
+  <div id="header">
+    {% block header %}{% endblock header %}
+  </div>
+  <div id="content">
+    {% block content %}{% endblock content %}
+  </div>
+  <div id="footer">
+    {% block footer %}{% endblock footer %}
+  </div>
 {% endblock container %}
 
 {% block scripts %}
 {#
-    The default script configuration uses RequireJS to initialize the app's 
-    default Backbone app. To dispense with this madness, simply override the
-    block.
+  The default script configuration uses RequireJS to initialize the app's 
+  default Backbone app. To dispense with this madness, simply override the
+  block.
 #}
 <script type="text/javascript">
 var require = {
-    urlRoot: './',
-    paths: {
-        backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
-        bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min',
-        jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery',
-        text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text',
-        underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore',
+  urlRoot: './',
+  paths: {
+    backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
+    bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min',
+    jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery',
+    text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text',
+    underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore',
+  },
+  shim: {
+    backbone: {
+      deps: ["underscore", "jquery"],
+      exports: "Backbone"
     },
-    shim: {
-        backbone: {
-            deps: ["underscore", "jquery"],
-            exports: "Backbone"
-        },
-        bootstrap: {
-            deps: ["jquery"]
-        },
-        underscore: {
-            exports: '_'
-        },
-    }
+    bootstrap: {
+      deps: ["jquery"]
+    },
+    underscore: {
+      exports: '_'
+    },
+  }
 };
 </script>
 
