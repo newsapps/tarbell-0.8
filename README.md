@@ -1,6 +1,10 @@
-# Tarbell Project Template
+# Warning! Deprecated!
 
-Read these docs (and see a demonstration of the Tarbell template) at: http://tarbell.tribapps.com/readme
+This codebase is deprecated in favor of [Tarbell 0.9](http://tarbell.tribapps.com)! Visit http://tarbell.tribapps.com to learn more. The official repository for Tarbell 0.9 and beyond is https://github.com/newsapps/flask-tarbell
+
+# Tarbell 0.8 project template
+
+The old documentation:
 
 * [Install Tarbell](https://github.com/newsapps/tarbell/blob/master/readme/docs/install.md)
 * [Create new project](https://github.com/newsapps/tarbell/blob/master/readme/docs/create.md)
